@@ -1,0 +1,35 @@
+{% extends "plantilla.twig" %}
+
+{% block title %} CREATE {% endblock %}
+
+{% block content %}
+
+<form action="http://localhost/DEWS_VS/?controller=users&action=save" method="POST">
+        <div class="row m-0 p-0 justify-content-center mb-3">
+            <div class="col-6 row">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre">
+                    <div id="nombre" class="form-text">Escribe nombre.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="apellidos" class="form-label">apellidos</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="apellidos">
+                    <div id="apellidos" class="form-text">Escribe apellidos.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">email</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="email">
+                    <div id="email" class="form-text">Escribe email.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">password</label>
+                    <input type="password" class="form-control" id="password" name="password" aria-describedby="password">
+                    <div id="password" class="form-text">Escribe password.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
