@@ -10,7 +10,12 @@
       */
   
     // Carga el fichero autoload.php
+    require_once 'config/Parameters.php';
     require_once 'vendor/autoload.php';
+    include 'controllers/UsersController.php';
+    include 'controllers/AuthController.php';
+    include 'controllers/IndexController.php';
+    
     session_start();
     
     // Ubicacion de mis plantillas de Twig
@@ -34,9 +39,6 @@
      * 6. Si la accion existe dentro del controlador, la realizamos.
      * 7. Si no existe la accion, error.
      */
-
-    include 'controllers/UsersController.php';
-    include 'controllers/AuthController.php';
 
     /**
      * Primero compruebo que controlador voy a cargar por URL

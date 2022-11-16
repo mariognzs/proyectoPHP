@@ -11,10 +11,14 @@
                 $user = new User();
                 echo $GLOBALS["twig"]->render(
                     'users/index.twig', 
-                    ['users' => $user->findAll()]
+                    [
+                        'users' => $user->findAll(),
+                        'identity' => $_SESSION['identity'],
+                        'URL' => URL
+                    ]
                 );
             }else{
-                header('Location: http://localhost/DEWS_VS/?controller=auth&action=login');
+                header('Location: '.URL.'controller=auth&action=login');
             }
         }
 
@@ -24,10 +28,14 @@
         public static function create(){
             if(isset($_SESSION['identity'])){
                 echo $GLOBALS["twig"]->render(
-                    'users/create.twig'
+                    'users/create.twig',
+                    [
+                        'identity' => $_SESSION['identity'],
+                        'URL' => URL
+                    ]
                 );
             }else{
-                header('Location: http://localhost/DEWS_VS/?controller=auth&action=login');
+                header('Location: '.URL.'controller=auth&action=login');
             }
         }
 
@@ -37,12 +45,17 @@
         public static function show(){
             if(isset($_SESSION['identity'])){
                 $user = new User();
+                $user->setId($_GET['id']);
                 echo $GLOBALS["twig"]->render(
                     'users/show.twig', 
-                    ['user' => $user->findById($_GET['id'])]
+                    [
+                        'user' => $user->findById(),
+                        'identity' => $_SESSION['identity'],
+                        'URL' => URL
+                    ]
                 );
             }else{
-                header('Location: http://localhost/DEWS_VS/?controller=auth&action=login');
+                header('Location: '.URL.'controller=auth&action=login');
             }
         }
 
@@ -52,12 +65,17 @@
         public static function edit(){
             if(isset($_SESSION['identity'])){
                 $user = new User();
+                $user->setId($_GET['id']);
                 echo $GLOBALS["twig"]->render(
                     'users/edit.twig', 
-                    ['user' => $user->findById($_GET['id'])]
+                    [
+                        'user' => $user->findById(),
+                        'identity' => $_SESSION['identity'],
+                        'URL' => URL
+                    ]
                 );
             }else{
-                header('Location: http://localhost/DEWS_VS/?controller=auth&action=login');
+                header('Location: '.URL.'controller=auth&action=login');
             }
         }
 
@@ -65,36 +83,52 @@
          * 
          */
         public static function save(){
-            $user = new User();
-            $user->setNombre($_POST['nombre']);
-            $user->setApellidos($_POST['apellidos']);
-            $user->setEmail($_POST['email']);
-            $user->setPassword($_POST['password']);
-            $user->save($user);
-            header("Location: http://localhost/DEWS_VS/?controller=users&action=index");
+            if(isset($_SESSION['identity'])){
+                $user = new User();
+                $user->setNombre($_POST['nombre']);
+                $user->setApellidos($_POST['apellidos']);
+                $user->setEmail($_POST['email']);
+                if(isset($_POST['password'])){
+                    $user->setPassword(password_hash($_POST['password'], PASSWORD_BCRYPT, ['cont' => 4]));
+                }
+                $user->save();
+                header('Location: '.URL.'controller=users&action=index');
+            }else{
+                header('Location: '.URL.'controller=auth&action=login');
+            }
         }
 
         /**
          * 
          */
         public static function update(){
-            $user = new User();
-            $user->setId($_POST['id']);
-            $user->setNombre($_POST['nombre']);
-            $user->setApellidos($_POST['apellidos']);
-            $user->setEmail($_POST['email']);
-            $user->setPassword($_POST['password']);
-            $user->update();
-            header("Location: http://localhost/DEWS_VS/controllers/?controller=users&action=index");
+            if(isset($_SESSION['identity'])){
+                $user = new User();
+                $user->setId($_POST['id']);
+                $user->setNombre($_POST['nombre']);
+                $user->setApellidos($_POST['apellidos']);
+                $user->setEmail($_POST['email']);
+                if(isset($_POST['password'])){
+                    $user->setPassword(password_hash($_POST['password'], PASSWORD_BCRYPT, ['cont' => 4]));
+                }
+                $user->update();
+                header('Location: '.URL.'controller=users&action=index');
+            }else{
+                header('Location: '.URL.'controller=auth&action=login');
+            }
         }
         /**
          * 
          */
         public static function delete(){
-            $user = new User();
-            $user->setId($_GET['id']);
-            $user->delete();
-            header("Location: http://localhost/DEWS_VS/controllers/?controller=users&action=index");
+            if(isset($_SESSION['identity'])){
+                $user = new User();
+                $user->setId($_GET['id']);
+                $user->delete();
+                header('Location: '.URL.'controller=users&action=index');
+            }else{
+                header('Location: '.URL.'controller=auth&action=login');
+            }
         }
     }
 ?>

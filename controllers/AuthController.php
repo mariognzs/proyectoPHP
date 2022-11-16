@@ -5,7 +5,11 @@
          * Funcion que redirige a la vista del login
          */
         public function login(){
-            echo $GLOBALS['twig']->render('auth/login.twig');
+            echo $GLOBALS['twig']->render('auth/login.twig',
+                [
+                    'URL' => URL
+                ]
+            );
         }
 
         /**
@@ -13,9 +17,14 @@
          */
         public function home(){
             if(isset($_SESSION['identity'])){
-                echo $GLOBALS['twig']->render('home.twig');
+                echo $GLOBALS['twig']->render('home.twig', 
+                    [
+                        'identity' => $_SESSION['identity'],
+                        'URL' => URL
+                    ]
+                );
             }else{
-                header('Location: http://localhost/DEWS_VS/?controller=auth&action=login');
+                header('Location: '.URL.'controller=index&action=index');
             }
         }
 
@@ -26,7 +35,7 @@
             if(isset($_SESSION['identity'])){
                 unset($_SESSION['identity']);
             }
-            header('Location: http://localhost/DEWS_VS/?controller=auth&action=login');
+            header('Location: '.URL.'controller=auth&action=login');
         }
 
         public function doLogin(){
@@ -53,9 +62,9 @@
 
              if($user_ok && is_object($user_ok)){
                 $_SESSION['identity'] = $user_ok;
-                header('Location: http://localhost/DEWS_VS/?controller=auth&action=home');
+                header('Location: '.URL.'controller=auth&action=home');
              }else{
-                header('Location: http://localhost/DEWS_VS/?controller=auth&action=login');
+                header('Location: '.URL.'controller=auth&action=login');
              }
         }
     }

@@ -1,34 +1,49 @@
-<!-- MODIFICAR -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
-  <body class="text-center">
-    <main class="w-100 m-auto">
-    <form action="http://localhost/proyectos/2DAW-CLASE-PHP/?controller=auth&action=doLogin" method="POST">
-        <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+{% extends "layouts/public.twig" %}
 
-        <div class="form-floating">
-        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating">
-        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-        </div>
+{% block title %}Login{% endblock %}
 
-        <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-    </form>
-    </main>
-  </body>
-</html>
+{% block style %}
+
+{% endblock %}
+
+{% block content %}
+ 
+	<!-- check out section -->
+	<div class="checkout-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="checkout-accordion-wrap">
+						<div class="accordion" id="accordionExample">
+						  <div class="card single-accordion">
+						    <div class="card-header" id="headingOne">
+						      <h5 class="mb-0">
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						          Iniciar sesión
+						        </button>
+						      </h5>
+						    </div>
+						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+						      <div class="card-body">
+						        <div class="billing-address-form">
+						        	<form action="{{ URL }}controller=auth&action=doLogin" method="POST">
+						        		<p><input type="email" name="email" placeholder="email"></p>
+						        		<p><input type="password" name="password" placeholder="password"></p>
+                        <p><button class="btn btn-secondary" type="submit">Iniciar sesión</button></p>
+						        	</form>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end check out section -->
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
