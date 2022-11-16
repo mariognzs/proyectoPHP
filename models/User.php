@@ -53,7 +53,7 @@
         }
     
         function setPassword($password) {
-            $this->password = password_hash($password, PASSWORD_BCRYPT, ['cont' => 4]) ;
+           $this->password = $password;
         }
 
         // Me va a devolver todos los elementos
@@ -85,6 +85,43 @@
         public function delete(){
             $db = Database::conectar();
             $delete = $db->query("DELETE FROM users WHERE id=$this->id");
+        }
+
+        /**
+         * Funcion login realiza la comprobacion de los campos introducidos.
+         * En caso correcto devuelve el usuario
+         * En caso incorrecto devuelve false
+         */
+        public function login(){
+            $db = Database::conectar();
+            $sql = "SELECT * FROM users WHERE email = '$this->email'";
+            
+            /**
+             * En $user tengo el usuario que contiene el email recogido en mi formulario
+             */
+            $user = $db->query($sql);
+            
+            // Si user existe y solamente tiene una coincidencia de email
+            if($user && $user->num_rows == 1){
+                /**
+                 * El metodo fetch_object() me devuelve los valores
+                 * recogidos de mi BD en un formato de objeto
+                 */
+                $user = $user->fetch_object();
+               
+                /**
+                 * password_verify comprueba un string con otro encriptado.
+                 * En este caso lo utilizo para comprobar mi password con el de BD
+                 */
+                $verify = password_verify($this->password, $user->password);
+
+                if($verify){
+                    // El password coincide y debo realizar el login
+                    return $user;
+                }else{
+                    return false;
+                }
+            }
         }
     }
 ?>
