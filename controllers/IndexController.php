@@ -1,6 +1,6 @@
 <?php
     class IndexController{
-        public function index(){
+        public static function index(){
             echo $GLOBALS['twig']->render('index.twig');
         }
 

@@ -1,15 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INDEX</title>
-    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
-</head>
-<body>
-    <h1>Estamos en el Home</h1>
-    <a class ="btn btn-danger"href="http://localhost/DEWS_VS/?controller=auth&action=logout">Logout</a>
-</body>
-</html>
+{% extends "layouts/admin.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block style %}
+    
+{% endblock %}
+
+{% block content %}
+
+	<!-- latest news -->
+	<div class="latest-news mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<a href="{{ URL }}controller=users&action=index"><div class="latest-news-bg news-bg-1 text-center">
+                            <i class="fas fa-user" style="font-size: 200px; color: black"></i>
+                            </div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">Usuarios</a></h3>
+							<p class="excerpt">Administración de usuarios</p>
+							<a href="{{ URL }}controller=users&action=index" class="read-more-btn">Ver más <i class="fas fa-angle-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end latest news -->
+    	<!-- end check out section -->
+{% endblock %}
+
+{% block script %}
+<!-- jquery -->
+	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	<!-- bootstrap -->
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- count down -->
+	<script src="assets/js/jquery.countdown.js"></script>
+	<!-- isotope -->
+	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<!-- waypoints -->
+	<script src="assets/js/waypoints.js"></script>
+	<!-- owl carousel -->
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<!-- magnific popup -->
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<!-- mean menu -->
+	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<!-- sticker js -->
+	<script src="assets/js/sticker.js"></script>
+	<!-- main js -->
+	<script src="assets/js/main.js"></script>
+{% endblock %}

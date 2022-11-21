@@ -1,0 +1,32 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %} PRODUCTOS | SHOW {% endblock %}
+
+{% block content %} 
+<br><br><br><br><br><br>
+    <!-- single product -->
+	<div class="single-product mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="single-product-img">
+						<img src="assets/img/avaters/usuario.png" style="border-radius:50%"alt="">
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="single-product-content">
+						<h3>{{ producto.nombre }}</h3>
+						<p>{{ producto.descripcion }}</p>
+						<p>{{ producto.precio }}</p>
+						<p>{{ producto.stock }}</p>
+                        <br><br><br><br><br><br><br><br><br><br><br><br>
+						<div class="single-product-form">
+							<a href="{{ URL }}controller=productos&action=index" class="cart-btn"> Volver</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end single product -->
+{% endblock %}
