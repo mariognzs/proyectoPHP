@@ -7,6 +7,7 @@
         private $descripcion;
         private $precio;
         private $stock;
+        private $image;
         private $categoria;
         
         /**
@@ -39,6 +40,10 @@
         function getCategoria() {
             return $this->categoria;
         }
+
+        function getImage() {
+            return $this->image;
+        }
     
         function setId($id) {
             $this->id = $id;
@@ -62,6 +67,10 @@
 
         function setCategoria($categoria) {
             $this->categoria = $categoria;
+        }
+
+        function setImage($image) {
+            $this->image = $image;
          }
 
         // Me va a devolver todos los elementos
@@ -81,7 +90,7 @@
         public function save(){
             $db = Database::conectar();
             //$save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock, categoria_id) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock', '$this->categoria')");
-            $save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock')");
+            $save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock , imagen) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock' , '$this->image')");
 
         }
 

@@ -1,0 +1,75 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %}PEDIDOS{% endblock %}
+
+{% block style %}
+    
+{% endblock %}
+
+{% block content %}
+
+<div class="m-5">
+    <a href="{{ URL.URL }}?controller=pedidos&action=create" class="btn btn-info">Create</a>
+    
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Fecha</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {# Bucle en Twig #}
+        {% for u in pedidos %}
+            <tr>
+                <th scope="row">{{ u.id }}</th>
+                <td>{{ u.usuarios_id }}</td>
+                <td>{{ u.fecha }}</td>
+
+                <td></td>
+                <td>
+                    <a href="{{ URL.URL }}?controller=pedidos&action=edit&id={{ u.id }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ URL.URL }}?controller=pedidos&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
+                    <a href="{{ URL.URL }}?controller=pedidos&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>  
+
+<h1>HOLA</h1>
+<!-- cart -->
+	<div class="cart-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table">
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+									<th class="product-name">ID</th>
+									<th class="product-price">Total</th>
+									<th class="product-quantity">Fecha</th>
+                                    <th class="product-quantity"></th>
+								</tr>
+							</thead>
+							<tbody>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end cart -->
+
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

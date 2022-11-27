@@ -11,8 +11,7 @@
             if(isset($_SESSION['identity'])){
                 $producto = new Producto();
                 //$categoria = new Categoria();
-                echo $GLOBALS["twig"]->render(
-                    'productos/index.twig', 
+                echo $GLOBALS["twig"]->render('productos/index.twig', 
                     [
                         'productos' => $producto->findAll(),
                         //'categorias' => $categoria->findAll(),
@@ -21,6 +20,7 @@
                     ]
                 );
             }else{
+                //echo $_SESSION['admin'];
                 header('Location: '.URL.'?controller=auth&action=login');
             }
         }
@@ -98,6 +98,14 @@
                 $producto->setDescripcion($_POST['descripcion']);
                 $producto->setPrecio(str_replace(",",".",$_POST['precio']));
                 $producto->setStock($_POST['stock']);
+                // if(isset($_POST["image"])){
+                //     $check = getimagesize($_FILES["image"]["tmp_name"]);
+                //     if($check !== false){
+                //         $image = $_FILES['image']['tmp_name'];
+                //         $imgContenido = addslashes(file_get_contents($image));
+                //         $producto->setImage($imgContenido);
+                //     }
+                // }
                 //$producto->setCategoria($_POST['categoria']);
                 $producto->save();
                 header('Location: '.URL.'?controller=productos&action=index');

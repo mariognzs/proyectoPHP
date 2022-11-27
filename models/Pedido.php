@@ -39,7 +39,10 @@
 
         // Me va a devolver todos los elementos
         public function findAll(){
-
+            $db = Database::conectar();
+            $findAll = $db->query("SELECT * FROM pedidos;");
+            return $findAll;
+            
         }
 
         public function findById(){

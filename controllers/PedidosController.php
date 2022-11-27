@@ -5,14 +5,17 @@
     class PedidosController{
        
         public static function index(){
-            if(isset($_SESSION['identity']) && !isset($_SESSION['admin'])){
-                
+            if(isset($_SESSION['identity']) ){ //&& !isset($_SESSION['admin'])
+                 $pedido = new Pedido();
                 echo $GLOBALS['twig']->render('pedidos/index.twig', 
                     [
+                        'pedidios' => $pedido->findAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
                 );
+            }else{
+                echo "NO VA";
             }
         }
 
