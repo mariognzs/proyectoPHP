@@ -8,6 +8,7 @@
         private $apellidos;
         private $email;
         private $password;
+
         
         /**
          * Class constructor.
@@ -56,10 +57,27 @@
            $this->password = $password;
         }
 
+        //Detectar rol de usuario
+        public function findIdRol(){
+            $db = Database::conectar();
+            //$findRol = $db->query("SELECT * FROM proyectophp.users INNER JOIN proyectophp.users_rol ON proyectophp.users.id = proyectophp.users_rol.user_id  where proyectophp.users.id = $this->id;");
+            echo $this->id;
+            $findRol = $db->query("SELECT * FROM users INNER JOIN users_rol ON users.id = users_rol.user_id where users.id = '$this->id';");
+            return $findRol;
+        }
+
+        public function findAllRol(){ //saca el rol del usuario
+            $db = Database::conectar();
+            echo $this->id;
+            $findRol = $db->query("SELECT * FROM users INNER JOIN users_rol ON users.id = users_rol.user_id INNER JOIN rol ON users_rol.rol_id = rol.id;");
+            return $findRol;
+        }
+
         // Me va a devolver todos los elementos
         public function findAll(){
             $db = Database::conectar();
-            $findAll = $db->query("SELECT * FROM users;");
+            echo("<script>console.log('PHP: ".$this->id."');</script>");
+            $findAll = $db->query("SELECT * FROM users INNER JOIN users_rol ON users.id = users_rol.user_id;");
             return $findAll;
         }
 
@@ -147,5 +165,6 @@
                 return false;
             }
         }
+
     }
 ?>

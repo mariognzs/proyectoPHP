@@ -14,6 +14,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Apellidos</th>
             <th scope="col">Email</th>
+            <th scope="col">Rol</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -25,6 +26,8 @@
                 <td>{{ u.nombre }}</td>
                 <td>{{ u.apellidos }}</td>
                 <td>{{ u.email }}</td>
+                <td>{{ u.nombre }}</td>
+                <td></td>
                 <td>
                     <a href="{{ URL.URL }}?controller=users&action=edit&id={{ u.id }}" class="btn btn-warning">Edit</a>
                     <a href="{{ URL.URL }}?controller=users&action=show&id={{ u.id }}" class="btn btn-success">Show</a>

@@ -18,7 +18,7 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Email: {{ user.email }}</li>
-                    <li class="list-group-item">Rol: Cliente|Admin</li>
+                    <li class="list-group-item">Rol: {{ user.rol }}</li>
                 </ul>
                 <div class="card-body">
                     <a href="{{ URL }}?controller=users&action=index" class="btn btn-outline-warning card-link">Volver</a>

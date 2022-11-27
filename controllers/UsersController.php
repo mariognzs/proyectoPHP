@@ -12,7 +12,7 @@
                 echo $GLOBALS["twig"]->render(
                     'users/index.twig', 
                     [
-                        'users' => $user->findAll(),
+                        'users' => $user->findAllRol(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
