@@ -8,7 +8,7 @@
     <!-- cart -->
 	<div class="cart-section mt-150 mb-150">
 		<div class="container">
-         <a href="{{ URL }}controller=productos&action=create" >
+         <a href="{{ URL }}?controller=productos&action=create" >
          <p><input type="submit" value="Crear"></p>
          </a>
 			<div class="row">
@@ -34,9 +34,9 @@
 										<td class="product-price">{{ u.precio }}</td>
 										<td class="product-quantity">{{ u.stock }}</td>
 										<td class="product-total"> 
-											<a href="{{ URL }}controller=productos&action=edit&id={{ u.id }}" class="btn btn-secondary">Edit</a>
-											<a href="{{ URL }}controller=productos&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
-											<a href="{{ URL }}controller=productos&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>
+											<a href="{{ URL }}?controller=productos&action=edit&id={{ u.id }}" class="btn btn-secondary">Edit</a>
+											<a href="{{ URL }}?controller=productos&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
+											<a href="{{ URL }}?controller=productos&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>
 										</td>
 									</tr>
                                 {% endfor %}

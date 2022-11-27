@@ -21,7 +21,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -40,7 +40,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -62,7 +62,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -84,7 +84,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -100,9 +100,9 @@
                 $producto->setStock($_POST['stock']);
                 $producto->setCategoria($_POST['categoria']);
                 $producto->save();
-                header('Location: '.URL.'controller=productos&action=index');
+                header('Location: '.URL.'?controller=productos&action=index');
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -119,9 +119,9 @@
                 $producto->setStock($_POST['stock']);
                 $producto->setCategoria($_POST['categoria']);
                 $producto->update();
-                header('Location: '.URL.'controller=productos&action=index');
+                header('Location: '.URL.'?controller=productos&action=index');
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
         /**
@@ -132,9 +132,9 @@
                 $producto = new Producto();
                 $producto->setId($_GET['id']);
                 $producto->delete();
-                header('Location: '.URL.'controller=productos&action=index');
+                header('Location: '.URL.'?controller=productos&action=index');
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
     }

@@ -18,7 +18,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -34,7 +34,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -54,7 +54,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -74,7 +74,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -91,9 +91,9 @@
                     $user->setPassword(password_hash($_POST['password'], PASSWORD_BCRYPT, ['cont' => 4]));
                 }
                 $user->save();
-                header('Location: '.URL.'controller=users&action=index');
+                header('Location: '.URL.'?controller=users&action=index');
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -111,9 +111,9 @@
                     $user->setPassword(password_hash($_POST['password'], PASSWORD_BCRYPT, ['cont' => 4]));
                 }
                 $user->update();
-                header('Location: '.URL.'controller=users&action=index');
+                header('Location: '.URL.'?controller=users&action=index');
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
         /**
@@ -124,9 +124,9 @@
                 $user = new User();
                 $user->setId($_GET['id']);
                 $user->delete();
-                header('Location: '.URL.'controller=users&action=index');
+                header('Location: '.URL.'?controller=users&action=index');
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
     }

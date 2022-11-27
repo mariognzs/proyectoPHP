@@ -32,7 +32,7 @@
 						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form action="{{ URL }}controller=productos&action=update" method="POST" method="POST">
+						        	<form action="{{ URL }}?controller=productos&action=update" method="POST" method="POST">
 										<p><input type="hidden" name="id"  value="{{ producto.id }}"></p>
 										<p><input type="text" id="nombre" name="nombre" value="{{ producto.nombre }}" placeholder="nombre"></p>
                                         <p><input type="text" id="descripcion" name="descripcion" value="{{ producto.descripcion }}" placeholder="descripcion"></p>

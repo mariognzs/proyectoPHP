@@ -33,7 +33,7 @@ require_once 'models/Categoria.php';
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=index&action=index');
+                header('Location: '.URL.'?controller=index&action=index');
             }
         }
 
@@ -47,7 +47,7 @@ require_once 'models/Categoria.php';
             if(isset($_SESSION['admin'])){
                 unset($_SESSION['admin']);
             }
-            header('Location: '.URL.'controller=auth&action=login');
+            header('Location: '.URL.'?controller=auth&action=login');
         }
 
         public function doLogin(){
@@ -80,20 +80,26 @@ require_once 'models/Categoria.php';
                 $_SESSION['identity'] = $user_ok;
 
                 if(isset($_SESSION['admin'])){
-                    header('Location: '.URL.'controller=auth&action=home');
+                    header('Location: '.URL.'?controller=auth&action=home');
                 }else{
-                    header('Location: '.URL.'controller=auth&action=welcome');
+                    header('Location: '.URL.'?controller=auth&action=welcome');
                 }
              }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
              }
         }
 
 
         public function doRegister(){
             $user = new User();
-
-            return null;
+            $user->setNombre($_POST['nombre']);
+            $user->setApellidos($_POST['apellidos']);
+            $user->setEmail($_POST['email']);
+            if(isset($_POST['password'])){
+                $user->setPassword(password_hash($_POST['password'], PASSWORD_BCRYPT, ['cont' => 4]));
+            }
+            $user->save();
+            header('Location: '.URL.'?controller=auth&action=login');
         }
 
 
@@ -113,7 +119,7 @@ require_once 'models/Categoria.php';
                         ]
                     );
             }else{
-                header('Location: '.URL.'controller=index&action=index');
+                header('Location: '.URL.'?controller=index&action=index');
             }
         }
     }

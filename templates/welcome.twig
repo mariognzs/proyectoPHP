@@ -34,7 +34,7 @@
                             <p class="product-price"><span>Precio por Kg</span> {{ u.precio }} </p>
                             <p class="product-price"><span>Cantidad diposnible</span> 
                                 {{ u.stock }} </p>
-                                <a href="{{ URL }}controller=carrito&action=agregar&id={{ u.id }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar</a>
+                                <a href="{{ URL }}?controller=carrito&action=agregar&id={{ u.id }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar</a>
                         </div>
                     </div>
                 {% endfor %}

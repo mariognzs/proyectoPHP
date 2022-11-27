@@ -72,7 +72,7 @@
                 // Paso 4: eliminar los productos del carrito y redireccionar al carrito ya vacio
                 CarritoController::deleteAll();
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -84,7 +84,7 @@
             if(isset($_SESSION['carrito']) && isset($_SESSION['identity']) && !isset($_SESSION['admin'])){
                 
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
     }

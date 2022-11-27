@@ -18,7 +18,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -35,7 +35,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -55,7 +55,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -75,7 +75,7 @@
                     ]
                 );
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -87,9 +87,9 @@
                 $categoria = new Categoria();
                 $categoria->setNombre($_POST['nombre']);
                 $categoria->save();
-                header('Location: '.URL.'controller=categorias&action=index');
+                header('Location: '.URL.'?controller=categorias&action=index');
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 
@@ -102,9 +102,9 @@
                 $categoria->setId($_POST['id']);
                 $categoria->setNombre($_POST['nombre']);
                 $categoria->update();
-                header('Location: '.URL.'controller=categorias&action=index');
+                header('Location: '.URL.'?controller=categorias&action=index');
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
         /**
@@ -115,9 +115,9 @@
                 $categoria = new Categoria();
                 $categoria->setId($_GET['id']);
                 $categoria->delete();
-                header('Location: '.URL.'controller=categorias&action=index');
+                header('Location: '.URL.'?controller=categorias&action=index');
             }else{
-                header('Location: '.URL.'controller=auth&action=login');
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
     }

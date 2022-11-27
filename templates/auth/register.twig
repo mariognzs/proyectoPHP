@@ -9,7 +9,7 @@
 {% block content %}
 
 <!-- MODIFICAR -->
-<form action="{{ URL.URL }}?controller=auth&action=register" method="POST" class="m-3">
+<form action="{{ URL.URL }}?controller=auth&action=doRegister" method="POST" class="m-3">
         <div class="row m-0 p-0 justify-content-center mb-3">
             <div class="col-6 row">
                 <div class="mb-3">
@@ -25,10 +25,10 @@
                     <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Escriba su email">
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Escriba su password">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Escriba su contraseña">
                 </div>
-                <button type="submit" class="btn btn-warning">Submit</button>
+                <button type="submit" class="btn btn-warning">Enviar</button>
             </div>
         </div>
     </form>
