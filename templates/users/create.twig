@@ -1,10 +1,10 @@
-{% extends "plantilla.twig" %}
+{% extends "layouts/admin.twig" %}
 
 {% block title %} CREATE {% endblock %}
 
 {% block content %}
 
-<form action="http://localhost/DEWS_VS/?controller=users&action=save" method="POST">
+<form action="{{ URL.URL }}?controller=users&action=save" method="POST">
         <div class="row m-0 p-0 justify-content-center mb-3">
             <div class="col-6 row">
                 <div class="mb-3">

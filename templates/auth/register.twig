@@ -1,34 +1,41 @@
+{% extends "layouts/public.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block content %}
+
 <!-- MODIFICAR -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
-  <body class="text-center">
-    <main class="w-100 m-auto">
-    <form action="http://localhost/proyectos/2DAW-CLASE-PHP/?controller=auth&action=doLogin" method="POST">
-        <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-        <div class="form-floating">
-        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+<form action="{{ URL.URL }}?controller=auth&action=register" method="POST" class="m-3">
+        <div class="row m-0 p-0 justify-content-center mb-3">
+            <div class="col-6 row">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Escriba su nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="apellidos" placeholder="Escriba sus apellidos">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Escriba su email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Escriba su password">
+                </div>
+                <button type="submit" class="btn btn-warning">Submit</button>
+            </div>
         </div>
-        <div class="form-floating">
-        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-        </div>
-
-        <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
     </form>
-    </main>
-  </body>
-</html>
+
+	<!-- end check out section -->
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

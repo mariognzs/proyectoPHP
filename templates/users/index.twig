@@ -1,10 +1,10 @@
 {# Enlazar este fichero con la plantilla correspondiente #}
-{% extends "plantilla.twig" %}
+{% extends "layouts/admin.twig" %}
 
 {% block title %}Index{% endblock %}
 
 {% block content %}
-    <a href="http://localhost/DEWS_VS/?controller=users&action=create" class="btn btn-primary">Create</a>
+    <a href="{{ URL.URL }}?controller=users&action=create" class="btn btn-primary">Create</a>
     
     <table class="table table-striped">
     <thead>
@@ -25,9 +25,9 @@
             <td>{{ u.apellidos }}</td>
             <td>{{ u.email }}</td>
             <td>
-                <a href="http://localhost/DEWS_VS/?controller=users&action=edit&id={{ u.id }}" class="btn btn-secondary">Edit</a>
-                <a href="http://localhost/DEWS_VS/?controller=users&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
-                <a href="http://localhost/DEWS_VS/?controller=users&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>
+                <a href="{{ URL.URL }}?controller=users&action=edit&id={{ u.id }}" class="btn btn-secondary">Edit</a>
+                <a href="{{ URL.URL }}?controller=users&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
+                <a href="{{ URL.URL }}?controller=users&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         {% endfor %}

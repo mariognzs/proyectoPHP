@@ -1,0 +1,33 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %} USUARIOS | SHOW {% endblock %}
+
+{% block content %} 
+
+
+<div class="m-0 mt-5 row justify-content-center">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="assets/img/user.svg" class="img-fluid rounded-start align-text-botton mt-3" alt="" width="100%">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <div class="card-header">
+                    <h3>{{ user.nombre | title }} {{ user.apellidos | title }}</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Email: {{ user.email }}</li>
+                    <li class="list-group-item">Rol: Cliente|Admin</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{{ URL }}controller=users&action=index" class="btn btn-outline-warning card-link">Volver</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	<!-- end single product -->
+{% endblock %}

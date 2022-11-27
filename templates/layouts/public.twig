@@ -5,75 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-	<script href=""></script>
-    {% block style %}{% endblock %}
+ 	<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+	<script src="node_modules/boostrap/dist/js/bootstrap.js"></script>
+{% block style %}{% endblock %}
 </head>
 <body>
-   <!--PreLoader-->
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div>
-    <!--PreLoader Ends-->
-	
-	<!-- header -->
-	<div class="top-header-area" style="background-color: #051922;" id="sticker">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-sm-12 text-center">
-					<div class="main-menu-wrap">
-						<!-- logo -->
-						<div class="site-logo">
-							<a href="{{ URL }}?controller=index&action=index">
-								<img src="assets/img/logo.png" alt="">
-							</a>
-						</div>
-						<!-- logo -->
 
-						<!-- menu start -->
-						<nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="{{ URL }}?controller=index&action=index">Home</a></li>
-								<li><a href="#">Productos</a></li>
-								<li>
-									<div class="header-icons">
-										{# <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a> #}
-										<a class="mobile-hide search-bar-icon" href="{{ URL }}?controller=auth&action=login"><i class="fas fa-user"></i> Iniciar sesion</a>
-									</div>
-								</li>
-							</ul>
-						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-						<div class="mobile-menu"></div>
-						<!-- menu end -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{{ URL }}?controller=index&action=index" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Productos</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">#</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">#</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">#</a></li>
+        </ul>
+		<!--
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+        </form>
+		-->
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2"><a class="nav-link text-white"  href="{{ URL }}?controller=auth&action=login">Login</a></button>
+          <button type="button" class="btn btn-warning"><a class="nav-link text-black"  href="{{ URL }}?controller=auth&action=register">Sign-up</a></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
 	<!-- end header -->
     {% block content %} {% endblock %}
+	<!-- copyright -->
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0 ">© 2022 Company, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex me-5">
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><img src="assets/img/instagram.svg"></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><img src="assets/img/facebook.svg"></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><img src="assets/img/twitter.svg"></svg></a></li>
+    </ul>
+  </footer>
+	<!-- end copyright -->	
 </body>
-<!-- jquery -->
-	<script src="assets/js/jquery-1.11.3.min.js"></script>
-	<!-- bootstrap -->
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<!-- count down -->
-	<script src="assets/js/jquery.countdown.js"></script>
-	<!-- isotope -->
-	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-	<!-- waypoints -->
-	<script src="assets/js/waypoints.js"></script>
-	<!-- owl carousel -->
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<!-- magnific popup -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
-	<!-- mean menu -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
-	<!-- sticker js -->
-	<script src="assets/js/sticker.js"></script>
-	<!-- main js -->
-	<script src="assets/js/main.js"></script>
+
+
 {% block script %}{% endblock %}
 </html>

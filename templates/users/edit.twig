@@ -1,0 +1,42 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %} USUARIOS | EDIT {% endblock %}
+
+{% block content %} 
+    <!-- check out section -->
+	<div class="checkout-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="checkout-accordion-wrap">
+						<div class="accordion" id="accordionExample">
+						  <div class="card single-accordion">
+						    <div class="card-header" id="headingOne">
+						      <h5 class="mb-0">
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						          Actualizar usuario
+						        </button>
+						      </h5>
+						    </div>
+						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+						      <div class="card-body">
+						        <div class="billing-address-form">
+						        	<form action="{{ URL }}controller=users&action=update" method="POST" method="POST">
+                                        <p><input type="hidden" name="id"  value="{{ user.id }}"></p>
+						        		<p><input type="text" id="nombre" name="nombre"  value="{{ user.nombre }}" placeholder="nombre"></p>
+                                        <p><input type="text" id="apellidos" name="apellidos"  value="{{ user.apellidos }}" placeholder="apellidos"></p>
+						        		<p><input type="email" id="email" name="email"  value="{{ user.email }}" placeholder="email"></p>
+                                        <p><input type="password" id="password" name="password" placeholder="password"></p>
+                                        <p><button class="btn btn-secondary" type="submit">Actualizar</button></p>
+						        	</form>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

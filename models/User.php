@@ -106,7 +106,6 @@
              * En $user tengo el usuario que contiene el email recogido en mi formulario
              */
             $user = $db->query($sql);
-            
             // Si user existe y solamente tiene una coincidencia de email
             if($user && $user->num_rows == 1){
                 /**
@@ -119,7 +118,7 @@
                  * password_verify comprueba un string con otro encriptado.
                  * En este caso lo utilizo para comprobar mi password con el de BD
                  */
-                $verify = password_verify($this->password, $user->password);
+                $verify = password_verify($this->password, $user->password); //THIS HACE REFERENCIA A USER
 
                 if($verify){
                     // El password coincide y debo realizar el login
@@ -141,7 +140,7 @@
          */
         public static function isAdmin($id){
             $db = Database::conectar();
-            $tipo = $db->query("SELECT rol_id FROM users_has_rol WHERE user_id=$id")->fetch_object();
+            $tipo = $db->query("SELECT rol_id FROM users_rol WHERE user_id=$id")->fetch_object();
             if($tipo->rol_id == 1){
                 return true;
             }else{

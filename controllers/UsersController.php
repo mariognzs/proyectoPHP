@@ -30,7 +30,6 @@
                 echo $GLOBALS["twig"]->render(
                     'users/create.twig',
                     [
-                        'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
                 );

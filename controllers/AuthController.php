@@ -13,11 +13,19 @@ require_once 'models/Categoria.php';
             );
         }
 
+        public function register(){
+            echo $GLOBALS["twig"]->render(
+                'auth/register.twig',
+                [
+                    'URL' => URL
+                ]
+            );
+        }
         /**
          * Funcion que redirige a la vista del home
          */
         public function home(){
-            if(isset($_SESSION['identity'])){
+            if(isset($_SESSION['identity'])){ //isset nos dice que la variable no es null
                 echo $GLOBALS['twig']->render('home.twig', 
                     [
                         'identity' => $_SESSION['identity'],
@@ -56,6 +64,7 @@ require_once 'models/Categoria.php';
             $user->setPassword($_POST['password']);
             $user_ok = $user->login(); // objeto usuario si correcto o false si no correcto
 
+
             /**
              * Almaceno en $user_ok el resultado de mi metodo login()
              * 
@@ -79,6 +88,14 @@ require_once 'models/Categoria.php';
                 header('Location: '.URL.'controller=auth&action=login');
              }
         }
+
+
+        public function doRegister(){
+            $user = new User();
+
+            return null;
+        }
+
 
         /**
          * Funcion que me lleva a la vista de CLIENTE
