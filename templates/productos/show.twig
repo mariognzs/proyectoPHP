@@ -3,30 +3,29 @@
 {% block title %} PRODUCTOS | SHOW {% endblock %}
 
 {% block content %} 
-<br><br><br><br><br><br>
-    <!-- single product -->
-	<div class="single-product mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5">
-					<div class="single-product-img">
-						<img src="assets/img/avaters/usuario.png" style="border-radius:50%"alt="">
-					</div>
-				</div>
-				<div class="col-md-7">
-					<div class="single-product-content">
-						<h3>{{ producto.nombre }}</h3>
-						<p>{{ producto.descripcion }}</p>
-						<p>{{ producto.precio }}</p>
-						<p>{{ producto.stock }}</p>
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-						<div class="single-product-form">
-							<a href="{{ URL }}?controller=productos&action=index" class="cart-btn"> Volver</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end single product -->
+<div class="m-0 mt-5 row justify-content-center">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="" class="img-fluid rounded-start align-text-botton mt-3" alt="" width="100%">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <div class="card-header">
+                    <h3>{{ producto.nombre | title }}</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Descripcion: {{ producto.descripcion }}</li>
+                    <li class="list-group-item">Precio: {{ producto.precio }}</li>
+                    <li class="list-group-item">Stock: {{ producto.stock }}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{{ URL }}?controller=productos&action=index" class="btn btn-outline-warning card-link">Volver</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

@@ -48,7 +48,7 @@
                 echo $GLOBALS["twig"]->render(
                     'users/show.twig', 
                     [
-                        'user' => $user->findById(),
+                        'user' => $user->findIdRol(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]

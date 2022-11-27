@@ -5,47 +5,44 @@
 
 {% block content %}
 
-    <!-- cart -->
-	<div class="cart-section mt-150 mb-150">
-		<div class="container">
-         <a href="{{ URL }}?controller=productos&action=create" >
-         <p><input type="submit" value="Crear"></p>
-         </a>
-			<div class="row">
-				<div class="col-lg-8 col-md-12">
-					<div class="cart-table-wrap">
-						<table class="cart-table">
-							<thead class="cart-table-head">
-								<tr class="table-head-row">
-									<th class="product-remove"></th>
-									<th class="product-remove"></th>
-									<th class="product-image">Nombre</th>
-									<th class="product-name">Precio</th>
-									<th class="product-price">Stock</th>
-									<th class="product-total"></th>
-								</tr>
-							</thead>
-							<tbody>
-                             	{% for u in productos %}
-									<tr class="table-body-row">
-										<td class="product-remove">{{ u.id }}</td>
-										<td class="product-image"><img src="assets/img/avaters/usuario.png" style="border-radius:50%"alt=""></td>
-										<td class="product-name">{{ u.nombre }}</td>
-										<td class="product-price">{{ u.precio }}</td>
-										<td class="product-quantity">{{ u.stock }}</td>
-										<td class="product-total"> 
-											<a href="{{ URL }}?controller=productos&action=edit&id={{ u.id }}" class="btn btn-secondary">Edit</a>
-											<a href="{{ URL }}?controller=productos&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
-											<a href="{{ URL }}?controller=productos&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>
-										</td>
-									</tr>
-                                {% endfor %}
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end cart -->    
+<div class="m-5">
+    <a href="{{ URL.URL }}?controller=productos&action=create" class="btn btn-info">Create</a>
+    
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Imagen</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {# Bucle en Twig #}
+        {% for u in productos %}
+            <tr>
+                <th scope="row">{{ u.id }}</th>
+                <td>{{ u.nombre }}</td>
+                <td>{{ u.descripcion }}</td>
+                <td>{{ u.precio }}</td>
+                <td>{{ u.stock }}</td>
+                <td>{{ u.imgen }}</td>
+                <!--<td class="product-image"><img src="assets/img/avaters/usuario.png" style="border-radius:50%"alt=""></td>-->
+
+                <td></td>
+                <td>
+					<a href="{{ URL }}?controller=productos&action=edit&id={{ u.id }}" class="btn btn-warning">Edit</a>
+					<a href="{{ URL }}?controller=productos&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
+					<a href="{{ URL }}?controller=productos&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>  
+
+
 {% endblock %}

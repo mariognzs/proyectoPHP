@@ -10,12 +10,12 @@
         public static function index(){
             if(isset($_SESSION['identity'])){
                 $producto = new Producto();
-                $categoria = new Categoria();
+                //$categoria = new Categoria();
                 echo $GLOBALS["twig"]->render(
                     'productos/index.twig', 
                     [
                         'productos' => $producto->findAll(),
-                        'categorias' => $categoria->findAll(),
+                        //'categorias' => $categoria->findAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
@@ -34,7 +34,7 @@
                 echo $GLOBALS["twig"]->render(
                     'productos/create.twig',
                     [
-                        'categorias' => $categoria->findAll(),
+                       // 'categorias' => $categoria->findAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
@@ -50,13 +50,13 @@
         public static function show(){
             if(isset($_SESSION['identity'])){
                 $producto = new Producto();
-                $categoria = new Categoria();
+                //$categoria = new Categoria();
                 $producto->setId($_GET['id']);
                 echo $GLOBALS["twig"]->render(
                     'productos/show.twig', 
                     [
                         'producto' => $producto->findById(),
-                        'categorias' => $categoria->findAll(),
+                        //'categorias' => $categoria->findAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
@@ -78,7 +78,7 @@
                     'productos/edit.twig', 
                     [
                         'producto' => $producto->findById(),
-                        'categorias' => $categoria->findAll(),
+                        //'categorias' => $categoria->findAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
@@ -98,7 +98,7 @@
                 $producto->setDescripcion($_POST['descripcion']);
                 $producto->setPrecio(str_replace(",",".",$_POST['precio']));
                 $producto->setStock($_POST['stock']);
-                $producto->setCategoria($_POST['categoria']);
+                //$producto->setCategoria($_POST['categoria']);
                 $producto->save();
                 header('Location: '.URL.'?controller=productos&action=index');
             }else{
@@ -117,7 +117,7 @@
                 $producto->setDescripcion($_POST['descripcion']);
                 $producto->setPrecio(str_replace(",",".",$_POST['precio']));
                 $producto->setStock($_POST['stock']);
-                $producto->setCategoria($_POST['categoria']);
+                //$producto->setCategoria($_POST['categoria']);
                 $producto->update();
                 header('Location: '.URL.'?controller=productos&action=index');
             }else{

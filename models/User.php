@@ -8,7 +8,7 @@
         private $apellidos;
         private $email;
         private $password;
-
+        private $rol;
         
         /**
          * Class constructor.
@@ -36,6 +36,10 @@
         function getPassword() {
             return $this->password;
         }
+
+        function getRol() {
+            return $this->rol;
+        }
     
         function setId($id) {
             $this->id = $id;
@@ -57,26 +61,28 @@
            $this->password = $password;
         }
 
+        function setRol($rol) {
+            $this->rol = $rol;
+         }
+
         //Detectar rol de usuario
         public function findIdRol(){
             $db = Database::conectar();
             //$findRol = $db->query("SELECT * FROM proyectophp.users INNER JOIN proyectophp.users_rol ON proyectophp.users.id = proyectophp.users_rol.user_id  where proyectophp.users.id = $this->id;");
-            echo $this->id;
-            $findRol = $db->query("SELECT * FROM users INNER JOIN users_rol ON users.id = users_rol.user_id where users.id = '$this->id';");
+            $findRol = $db->query("SELECT * FROM users INNER JOIN users_rol ON users.id = users_rol.user_id INNER JOIN rol ON users_rol.rol_id = rol.idRol where users.id = '$this->id';")->fetch_object();
             return $findRol;
         }
 
         public function findAllRol(){ //saca el rol del usuario
             $db = Database::conectar();
             echo $this->id;
-            $findRol = $db->query("SELECT * FROM users INNER JOIN users_rol ON users.id = users_rol.user_id INNER JOIN rol ON users_rol.rol_id = rol.id;");
+            $findRol = $db->query("SELECT * FROM users INNER JOIN users_rol ON users.id = users_rol.user_id INNER JOIN rol ON users_rol.rol_id = rol.idRol;");
             return $findRol;
         }
 
         // Me va a devolver todos los elementos
         public function findAll(){
             $db = Database::conectar();
-            echo("<script>console.log('PHP: ".$this->id."');</script>");
             $findAll = $db->query("SELECT * FROM users INNER JOIN users_rol ON users.id = users_rol.user_id;");
             return $findAll;
         }
@@ -91,7 +97,8 @@
         public function save(){
             $db = Database::conectar();
             if($this->password != null){
-                $save = $db->query("INSERT INTO users (nombre, apellidos, email, password) VALUES ('$this->nombre','$this->apellidos', '$this->email', '$this->password')");
+                $save = $db->query("INSERT INTO users (nombre, apellidos, email, password) VALUES ('$this->nombre','$this->apellidos', '$this->email', '$this->password');");
+                $save = $db->query("INSERT INTO users_rol (user_id, rol_id) VALUES ('poner ultimo id','2');");
             }
         }
 
@@ -108,7 +115,8 @@
         // Eliminar en la base de datos filtrando por id
         public function delete(){
             $db = Database::conectar();
-            $delete = $db->query("DELETE FROM users WHERE id=$this->id");
+            $delete = $db->query("DELETE FROM users_rol WHERE user_id=$this->id");
+            $delete2 = $db->query("DELETE FROM users WHERE id=$this->id");
         }
 
         /**

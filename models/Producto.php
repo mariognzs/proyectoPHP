@@ -80,13 +80,17 @@
         // Insertar en la base de datos
         public function save(){
             $db = Database::conectar();
-            $save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock, categoria_id) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock', '$this->categoria')");
+            //$save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock, categoria_id) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock', '$this->categoria')");
+            $save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock')");
+
         }
 
         // Actualizar en la base de datos filtrando por id
         public function update(){
             $db = Database::conectar();
-            $update = $db->query("UPDATE productos SET nombre='$this->nombre', descripcion='$this->descripcion', precio='$this->precio', stock='$this->stock', categoria_id='$this->categoria' WHERE id=$this->id");
+            //$update = $db->query("UPDATE productos SET nombre='$this->nombre', descripcion='$this->descripcion', precio='$this->precio', stock='$this->stock', categoria_id='$this->categoria' WHERE id=$this->id");
+            $update = $db->query("UPDATE productos SET nombre='$this->nombre', descripcion='$this->descripcion', precio='$this->precio', stock='$this->stock' WHERE id=$this->id");
+
         }
 
         // Actualizar en la base de datos filtrando por id
