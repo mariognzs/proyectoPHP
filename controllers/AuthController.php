@@ -113,7 +113,7 @@ require_once 'models/Categoria.php';
                 echo $GLOBALS['twig']->render('welcome.twig', 
                         [
                             'productos' => $producto->findAll(),
-                            'categorias' => $categoria->findAll(),
+                            //'categorias' => $categoria->findAll(),
                             'identity' => $_SESSION['identity'],
                             'URL' => URL
                         ]

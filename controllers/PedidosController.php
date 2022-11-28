@@ -5,11 +5,13 @@
     class PedidosController{
        
         public static function index(){
-            if(isset($_SESSION['identity']) ){ //&& !isset($_SESSION['admin'])
+            if(isset($_SESSION['identity']) && isset($_SESSION['admin']) ){ 
                  $pedido = new Pedido();
+                // var_dump($pedido->findAll());
+                // exit();
                 echo $GLOBALS['twig']->render('pedidos/index.twig', 
                     [
-                        'pedidios' => $pedido->findAll(),
+                        'pedidos' => $pedido->findAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
@@ -20,7 +22,7 @@
         }
 
         public static function show(){
-            if(isset($_SESSION['identity']) && !isset($_SESSION['admin'])){
+            if(isset($_SESSION['identity']) && isset($_SESSION['admin'])){
                
                 echo $GLOBALS['twig']->render('pedidos/show.twig', 
                     [

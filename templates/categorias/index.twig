@@ -1,0 +1,40 @@
+{# Enlazar este fichero con la plantilla correspondiente #}
+{% extends "layouts/admin.twig" %}
+
+{% block title %}CATEGORIAS{% endblock %}
+
+{% block content %}
+<div class="m-5">
+    <a href="{{ URL.URL }}?controller=productos&action=create" class="btn btn-info">Create</a>
+    
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {# Bucle en Twig #}
+        {% for u in categorias %}
+            <tr>
+                <th scope="row">{{ u.idCategorias }}</th>
+                <td>{{ u.nombreCategoria }}</td>
+
+
+                <!--<td class="product-image"><img src="assets/img/avaters/usuario.png" style="border-radius:50%"alt=""></td>-->
+
+                <td></td>
+                <td class="text-end">
+					<a href="{{ URL }}?controller=categorias&action=edit&id={{ u.id }}" class="btn btn-warning">Edit</a>
+					<a href="{{ URL }}?controller=categorias&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
+					<a href="{{ URL }}?controller=categorias&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>
+                </div>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>  
+   
+{% endblock %}

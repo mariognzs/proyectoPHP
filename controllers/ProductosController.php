@@ -8,12 +8,12 @@
          * 
          */
         public static function index(){
-            if(isset($_SESSION['identity'])){
+            if(isset($_SESSION['identity']) && isset($_SESSION['admin'])){
                 $producto = new Producto();
                 //$categoria = new Categoria();
                 echo $GLOBALS["twig"]->render('productos/index.twig', 
                     [
-                        'productos' => $producto->findAll(),
+                        'productos' => $producto->findCategotiasAll(),
                         //'categorias' => $categoria->findAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
@@ -55,7 +55,7 @@
                 echo $GLOBALS["twig"]->render(
                     'productos/show.twig', 
                     [
-                        'producto' => $producto->findById(),
+                        'producto' => $producto->findCategotiasId(),
                         //'categorias' => $categoria->findAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
@@ -72,12 +72,12 @@
         public static function edit(){
             if(isset($_SESSION['identity'])){
                 $producto = new Producto();
-                $categoria = new Categoria();
+                //$categoria = new Categoria();
                 $producto->setId($_GET['id']);
                 echo $GLOBALS["twig"]->render(
                     'productos/edit.twig', 
                     [
-                        'producto' => $producto->findById(),
+                        'producto' => $producto->findCategotiasId(),
                         //'categorias' => $categoria->findAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
@@ -94,6 +94,7 @@
         public static function save(){
             if(isset($_SESSION['identity'])){
                 $producto = new Producto();
+                $producto->setCategoria($_POST['categoria']);
                 $producto->setNombre($_POST['nombre']);
                 $producto->setDescripcion($_POST['descripcion']);
                 $producto->setPrecio(str_replace(",",".",$_POST['precio']));
@@ -107,6 +108,23 @@
                 //     }
                 // }
                 //$producto->setCategoria($_POST['categoria']);
+
+                if (isset($_FILES['img'])) {
+                    $nombreImg = $_FILES['img']['name'];
+                    $ruta      = $_FILES['img']['tmp_name'];
+                    $destino   = "/blog/" . $nombreImg;
+                    
+                    // if (move_uploaded_file($ruta, $destino)){
+                    //     $sql = "INSERT INTO 'bd'(nombre,ruta) VALUES ('$nombreImg','$destino')";
+                    //     $res = mysqli_query($cn, $sql);
+                    //     if ($res) {
+                    //         echo '<script type="text/javascript"> alert("Agregado Correctamente"); window.location="index.php";</script>';
+                    //     } else {
+                    //         die("Error" . mysqli_error($cn));
+                    //     }
+                    // }
+                }
+
                 $producto->save();
                 header('Location: '.URL.'?controller=productos&action=index');
             }else{
@@ -121,6 +139,7 @@
             if(isset($_SESSION['identity'])){
                 $producto = new Producto();
                 $producto->setId($_POST['id']);
+                $producto->setCategoria($_POST['categoria']);
                 $producto->setNombre($_POST['nombre']);
                 $producto->setDescripcion($_POST['descripcion']);
                 $producto->setPrecio(str_replace(",",".",$_POST['precio']));

@@ -98,19 +98,23 @@
             $db = Database::conectar();
             if($this->password != null){
                 $save = $db->query("INSERT INTO users (nombre, apellidos, email, password) VALUES ('$this->nombre','$this->apellidos', '$this->email', '$this->password');");
-                $save = $db->query("INSERT INTO users_rol (user_id, rol_id) VALUES ('poner ultimo id','2');");
+                $save = $db->query("INSERT INTO users_rol (user_id, rol_id) VALUES ('$db->insert_id','2');");
             }
         }
 
         // Actualizar en la base de datos filtrando por id
         public function update(){
             $db = Database::conectar();
-            if($this->password != null){
-                $update = $db->query("UPDATE users SET nombre='$this->nombre', apellidos='$this->apellidos', email='$this->email', password='$this->password' WHERE id=$this->id");
-            }else{
-                $update = $db->query("UPDATE users SET nombre='$this->nombre', apellidos='$this->apellidos', email='$this->email' WHERE id=$this->id");
+                if($this->password != null){
+                    $update = $db->query("UPDATE users SET nombre='$this->nombre', apellidos='$this->apellidos', email='$this->email', password='$this->password' WHERE id='$this->id';");
+                    $update2 = $db->query("UPDATE users_rol SET rol_id='$this->rol' WHERE user_id= '$this->id';");
+                                         //UPDATE users_rol SET rol_id=     1       WHERE user_id=      2;
+                }else{
+                    $update = $db->query("UPDATE users SET nombre='$this->nombre', apellidos='$this->apellidos', email='$this->email'  WHERE id='$this->id';");
+                    $update2 = $db->query("UPDATE users_rol SET rol_id='$this->rol' WHERE user_id= '$this->id';");
+                }
             }
-        }
+        
 
         // Eliminar en la base de datos filtrando por id
         public function delete(){
@@ -164,6 +168,7 @@
          * Si es Admin, el id del rol es 1
          * Si es Cliente, el id del rol es 2
          */
+        
         public static function isAdmin($id){
             $db = Database::conectar();
             $tipo = $db->query("SELECT rol_id FROM users_rol WHERE user_id=$id")->fetch_object();

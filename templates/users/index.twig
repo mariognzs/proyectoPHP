@@ -28,7 +28,7 @@
                 <td>{{ u.email }}</td>
                 <td>{{ u.nombreRol }}</td>
                 <td></td>
-                <td>
+                <td class="text-end">
                     <a href="{{ URL.URL }}?controller=users&action=edit&id={{ u.id }}" class="btn btn-warning">Edit</a>
                     <a href="{{ URL.URL }}?controller=users&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
                     <a href="{{ URL.URL }}?controller=users&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>

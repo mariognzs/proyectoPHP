@@ -68,7 +68,7 @@
                 echo $GLOBALS["twig"]->render(
                     'users/edit.twig', 
                     [
-                        'user' => $user->findById(),
+                        'user' => $user->findIdRol(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
@@ -87,6 +87,7 @@
                 $user->setNombre($_POST['nombre']);
                 $user->setApellidos($_POST['apellidos']);
                 $user->setEmail($_POST['email']);
+                $user->setRol($_POST['rol']);
                 if(isset($_POST['password'])){
                     $user->setPassword(password_hash($_POST['password'], PASSWORD_BCRYPT, ['cont' => 4]));
                 }
@@ -107,6 +108,7 @@
                 $user->setNombre($_POST['nombre']);
                 $user->setApellidos($_POST['apellidos']);
                 $user->setEmail($_POST['email']);
+                $user->setRol($_POST['rol']);
                 if(isset($_POST['password'])){
                     $user->setPassword(password_hash($_POST['password'], PASSWORD_BCRYPT, ['cont' => 4]));
                 }
