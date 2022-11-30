@@ -149,7 +149,7 @@
             $db = Database::conectar();
             //$save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock, categoria_id) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock', '$this->categoria')");
             $this->imagen = mysqli_escape_string($db,$this->imagen);
-            $save3 = $db->query("INSERT INTO imagenes (nombreImagen,imagen,tipo,tamaño) VALUES ('$this->nombreArchivo','$this->imagen','$this->tipo','$this->tamaño');");
+            $save3 = $db->query("INSERT INTO imagenes (nombreImagen,imagen,tipo,tamaño) VALUES ('$this->nombreImagen','$this->imagen','$this->tipo','$this->tamaño');");
             $idImagen = $db->insert_id;
             $save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock')");
             $idProductos = $db->insert_id;

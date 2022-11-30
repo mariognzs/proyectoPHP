@@ -38,25 +38,25 @@
         // Me devuelve el elemento filtrado por id
         public function findById(){
             $db = Database::conectar();
-            return $db->query("SELECT * FROM categorias WHERE id=$this->id")->fetch_object();
+            return $db->query("SELECT * FROM categorias WHERE idCategorias='$this->id';")->fetch_object();
         }
 
         // Insertar en la base de datos
         public function save(){
             $db = Database::conectar();
-            $save = $db->query("INSERT INTO categorias (nombre) VALUES ('$this->nombre')");
+            $save = $db->query("INSERT INTO categorias (nombreCategoria) VALUES ('$this->nombre')");
         }
 
         // Actualizar en la base de datos filtrando por id
         public function update(){
             $db = Database::conectar();
-            $update = $db->query("UPDATE categorias SET nombre='$this->nombre' WHERE id=$this->id");
+            $update = $db->query("UPDATE categorias SET nombreCategoria='$this->nombre' WHERE idCategorias='$this->id';");
         }
 
         // Eliminar en la base de datos filtrando por id
         public function delete(){
             $db = Database::conectar();
-            $delete = $db->query("DELETE FROM categorias WHERE id=$this->id");
+            $delete = $db->query("DELETE FROM categorias WHERE idCategorias=$this->id");
         }
     }
 ?>

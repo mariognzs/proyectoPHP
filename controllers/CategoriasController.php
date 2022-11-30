@@ -69,7 +69,7 @@
                 echo $GLOBALS["twig"]->render(
                     'categorias/edit.twig', 
                     [
-                        'user' => $categoria->findById(),
+                        'categoria' => $categoria->findById(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]

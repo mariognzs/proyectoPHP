@@ -100,7 +100,6 @@
                 $producto->setPrecio(str_replace(",",".",$_POST['precio']));
                 $producto->setStock($_POST['stock']);
 
-                    if (isset($_REQUEST['guardar'])) {
                         if (isset($_FILES['image']['name'])) {
                             $tipoArchivo = $_FILES['image']['type'];
                             $permitido=array("image/png","image/jpeg");
@@ -118,7 +117,6 @@
                             $producto->setTipo($tipoArchivo);
                             $producto->setTamaño($tamanoArchivo);
 
-                    }
 
                 }
 

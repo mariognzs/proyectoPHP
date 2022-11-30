@@ -1,0 +1,50 @@
+{% extends "layouts/private.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block style %}
+    
+{% endblock %}
+
+{% block content %}
+<!-- products -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+                        <ul>
+                            <li class="active" data-filter="*">Todos</li>
+                            {% for u in categorias %}
+                                <li data-filter=".{{ u.id }}">{{ u.nombre }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+			<div class="row product-lists">
+                {% for u in productos %}
+                    <div class="col-lg-4 col-md-6 text-center {{ u.id }}">
+                        <div class="single-product-item">
+                            <div class="product-image">
+                                <a href="#"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+                            </div>
+                            <h3>{{ u.nombre }}</h3>
+                            <p class="product-price"><span>Precio por Kg</span> {{ u.precio }} </p>
+                            <p class="product-price"><span>Cantidad diposnible</span> 
+                                {{ u.stock }} </p>
+                                <a href="{{ URL }}?controller=carrito&action=agregar&id={{ u.id }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Agregar</a>
+                        </div>
+                    </div>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+	<!-- end products -->
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

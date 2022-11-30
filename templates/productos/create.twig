@@ -25,7 +25,7 @@
 						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form action="{{ URL }}?controller=productos&action=save" method="POST" method="POST">
+						        	<form action="{{ URL }}?controller=productos&action=save" method="POST" method="POST" enctype="multipart/form-data">
 										<p><input type="text" id="categoria" name="categoria"  placeholder="categoria"></p>
 						        		<p><input type="text" id="nombre" name="nombre"  placeholder="nombre"></p>
                                         <p><input type="text" id="descripcion" name="descripcion"  placeholder="descripcion"></p>
