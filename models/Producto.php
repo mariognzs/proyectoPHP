@@ -7,10 +7,14 @@
         private $descripcion;
         private $precio;
         private $stock;
-        private $image;
         private $marca;
-        private $tipo;
         private $categoria;
+        
+        private $idImagen;
+        private $imagen;
+        private $nombreImagen;
+        private $tipo;
+        private $tamaño;
         
         /**
          * Class constructor.
@@ -39,20 +43,32 @@
             return $this->stock;
         }
 
-        function getImage() {
-            return $this->image;
-        }
-
         function getMarca() {
             return $this->marca;
+        }
+
+        function getCategoria() {
+            return $this->categoria;
+        }
+
+        function getIdImagen() {
+            return $this->idImagen;
+        }
+
+        function getImagen() {
+            return $this->imagen;
+        }
+
+        function getNombreImagen() {
+            return $this->nombreImagen;
         }
 
         function getTipo() {
             return $this->tipo;
         }
 
-        function getCategoria() {
-            return $this->categoria;
+        function getTamaño() {
+            return $this->tamaño;
         }
     
         function setId($id) {
@@ -75,21 +91,33 @@
            $this->stock = $stock;
         }
 
-        function setImage($image) {
-            $this->image = $image;
-         }
-
         function setMarca($marca) {
             $this->marca = $marca;
-        }
-        
-        function setTipo($tipo) {
-            $this->tipo = $tipo;
         }
         
         function setCategoria($categoria) {
             $this->categoria = $categoria;
         }
+
+        function setIdImagen($idImagen) {
+            $this->idImagen = $idImagen;
+         }
+
+        function setImagen($imagen) {
+            $this->imagen = $imagen;
+         }
+
+         function setNombreImagen($nombreImagen) {
+            $this->nombreImagen = $nombreImagen;
+         }
+
+        function setTipo($tipo) {
+            $this->tipo = $tipo;
+         }
+
+         function setTamaño($tamaño) {
+            $this->tamaño = $tamaño;
+         }
 
         // Me va a devolver todos los elementos
         public function findAll(){
@@ -100,7 +128,7 @@
 
         public function findCategotiasAll(){
             $db = Database::conectar();
-            $findAll = $db->query("SELECT * FROM productos INNER JOIN productos_categorias ON productos.id = productos_categorias.id_productos INNER JOIN categorias ON productos_categorias.id_categorias = categorias.idCategorias;");
+            $findAll = $db->query("SELECT * FROM productos INNER JOIN productos_categorias ON productos.id = productos_categorias.id_productos INNER JOIN categorias ON productos_categorias.id_categorias = categorias.idCategorias");
             return $findAll;
         }
 
@@ -112,7 +140,7 @@
 
         public function findCategotiasId(){
             $db = Database::conectar();
-            $findAll = $db->query("SELECT * FROM productos INNER JOIN productos_categorias ON productos.id = productos_categorias.id_productos INNER JOIN categorias ON productos_categorias.id_categorias = categorias.idCategorias where productos.id = '$this->id';")->fetch_object();
+            $findAll = $db->query("SELECT * FROM productos INNER JOIN productos_categorias ON productos.id = productos_categorias.id_productos INNER JOIN categorias ON productos_categorias.id_categorias = categorias.idCategorias INNER JOIN productos_imagenes ON productos.id = productos_imagenes.id_productos where productos.id = '$this->id';")->fetch_object();
             return $findAll;
         }
 
@@ -120,8 +148,15 @@
         public function save(){
             $db = Database::conectar();
             //$save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock, categoria_id) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock', '$this->categoria')");
-            $save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock , imagen) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock' , '$this->image')");
-            $save2 = $db->query("INSERT INTO productos_categorias (id_productos, id_categorias) VALUES ('$db->insert_id','$this->categoria');");   
+            $this->imagen = mysqli_escape_string($db,$this->imagen);
+            $save3 = $db->query("INSERT INTO imagenes (nombreImagen,imagen,tipo,tamaño) VALUES ('$this->nombreArchivo','$this->imagen','$this->tipo','$this->tamaño');");
+            $idImagen = $db->insert_id;
+            $save = $db->query("INSERT INTO productos (nombre, descripcion, precio, stock) VALUES ('$this->nombre','$this->descripcion', '$this->precio', '$this->stock')");
+            $idProductos = $db->insert_id;
+            $save2 = $db->query("INSERT INTO productos_categorias (id_productos, id_categorias) VALUES ('$idProductos','$this->categoria');");   
+            $save4 = $db->query("INSERT INTO productos_imagenes (id_productos, id_imagenes) VALUES ('$idProductos','$idImagen');");   
+            
+            //$query = "INSERT INTO imagenes (nombre, imagen, tipo, tamaño) values ('".$nombreArchivo."','".$binariosImagen."','".$tipoArchivo."','".$tamanoArchivo."');";
 
 
         }
@@ -131,7 +166,9 @@
             $db = Database::conectar();
             //$update = $db->query("UPDATE productos SET nombre='$this->nombre', descripcion='$this->descripcion', precio='$this->precio', stock='$this->stock', categoria_id='$this->categoria' WHERE id=$this->id");
             $update = $db->query("UPDATE productos SET nombre='$this->nombre', descripcion='$this->descripcion', precio='$this->precio', stock='$this->stock' WHERE id=$this->id");
-            $update2 = $db->query("UPDATE productos_categorias SET id_categorias='$this->categoria' WHERE id_productos =$this->id");
+            $update2 = $db->query("UPDATE productos_categorias SET id_categorias='$this->categoria' WHERE id_productos = '$this->id'");
+            $update3 = $db->query("UPDATE productos_imagenes SET id_imagenes = '$this->idImagen' WHERE id_productos = '$this->id'");
+
 
 
         }
@@ -145,9 +182,15 @@
         // Eliminar en la base de datos filtrando por id
         public function delete(){
             $db = Database::conectar();
-            $delete = $db->query("DELETE FROM productos_caracteristicas WHERE id_productos =$this->id");
+            //$delete3 = $db->query("DELETE FROM imagen WHERE idImagenes =     $this->id");
+            $delete = $db->query("DELETE FROM productos_categorias WHERE id_productos =$this->id");
+            $delete = $db->query("DELETE FROM productos_imagenes WHERE id_productos =$this->id");
+
             $delete2 = $db->query("DELETE FROM productos WHERE id=$this->id");
         
         }
+
+
+        
     }
 ?>

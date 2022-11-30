@@ -11,7 +11,7 @@
                 // exit();
                 echo $GLOBALS['twig']->render('pedidos/index.twig', 
                     [
-                        'pedidos' => $pedido->findAll(),
+                        'pedidos' => $pedido->findProductAll(),
                         'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]

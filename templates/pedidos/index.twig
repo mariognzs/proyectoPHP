@@ -16,6 +16,9 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Usuario</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Unidades</th>
+            <th scope="col">Precio</th>
             <th scope="col">Fecha</th>
             <th scope="col"></th>
         </tr>
@@ -26,8 +29,11 @@
         {% for u in pedidos %}
        
             <tr>
-                <th scope="row">{{ u.id }}</th>
+                <th scope="row">{{ u.idPedidos }}</th>
                 <td>{{ u.usuarios_id }}</td>
+                <td>{{ u.nombre }}</td>
+                <td>{{ u.unidades }}</td>
+                <td>{{ u.precioPedido }}</td>
                 <td>{{ u.fecha }}</td>
 
                 <td></td>

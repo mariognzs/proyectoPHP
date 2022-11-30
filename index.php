@@ -27,6 +27,10 @@
     // Ubicacion de mis plantillas de Twig
     $loader = new \Twig\Loader\FilesystemLoader('templates');
     $twig = new \Twig\Environment($loader);
+
+
+
+
     /**
      * $GLOBALS almacena variables para estar accesibles en todo mi documento.
      * Esto lo utilizamos desde los controladores para llamar a las vistas

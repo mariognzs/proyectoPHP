@@ -45,6 +45,13 @@
             
         }
 
+        public function findProductAll(){
+            $db = Database::conectar();
+            $findAll = $db->query("SELECT * FROM pedidos INNER JOIN pedidos_productos ON pedidos.idPedidos = pedidos_productos.pedido_id INNER JOIN productos ON pedidos_productos.producto_id = productos.id;");
+            return $findAll;
+            
+        }
+
         public function findById(){
 
         }

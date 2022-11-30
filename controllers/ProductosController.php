@@ -99,30 +99,27 @@
                 $producto->setDescripcion($_POST['descripcion']);
                 $producto->setPrecio(str_replace(",",".",$_POST['precio']));
                 $producto->setStock($_POST['stock']);
-                // if(isset($_POST["image"])){
-                //     $check = getimagesize($_FILES["image"]["tmp_name"]);
-                //     if($check !== false){
-                //         $image = $_FILES['image']['tmp_name'];
-                //         $imgContenido = addslashes(file_get_contents($image));
-                //         $producto->setImage($imgContenido);
-                //     }
-                // }
-                //$producto->setCategoria($_POST['categoria']);
 
-                if (isset($_FILES['img'])) {
-                    $nombreImg = $_FILES['img']['name'];
-                    $ruta      = $_FILES['img']['tmp_name'];
-                    $destino   = "/blog/" . $nombreImg;
-                    
-                    // if (move_uploaded_file($ruta, $destino)){
-                    //     $sql = "INSERT INTO 'bd'(nombre,ruta) VALUES ('$nombreImg','$destino')";
-                    //     $res = mysqli_query($cn, $sql);
-                    //     if ($res) {
-                    //         echo '<script type="text/javascript"> alert("Agregado Correctamente"); window.location="index.php";</script>';
-                    //     } else {
-                    //         die("Error" . mysqli_error($cn));
-                    //     }
-                    // }
+                    if (isset($_REQUEST['guardar'])) {
+                        if (isset($_FILES['image']['name'])) {
+                            $tipoArchivo = $_FILES['image']['type'];
+                            $permitido=array("image/png","image/jpeg");
+                            
+                            if( in_array($tipoArchivo,$permitido) ==false ){
+                                die("Archivo no permitido");
+                            }
+                            $nombreArchivo = $_FILES['image']['name'];
+                            $tamanoArchivo = $_FILES['image']['size'];
+                            $imagenSubida = fopen($_FILES['image']['tmp_name'], 'r');
+                            $binariosImagen = fread($imagenSubida, $tamanoArchivo);
+
+                            $producto->setNombreImagen($nombreArchivo);
+                            $producto->setImagen($binariosImagen);
+                            $producto->setTipo($tipoArchivo);
+                            $producto->setTamaño($tamanoArchivo);
+
+                    }
+
                 }
 
                 $producto->save();
@@ -144,6 +141,8 @@
                 $producto->setDescripcion($_POST['descripcion']);
                 $producto->setPrecio(str_replace(",",".",$_POST['precio']));
                 $producto->setStock($_POST['stock']);
+                $producto->setIdImagen($_POST['id_imagenes']);
+
                 //$producto->setCategoria($_POST['categoria']);
                 $producto->update();
                 header('Location: '.URL.'?controller=productos&action=index');
