@@ -34,10 +34,30 @@
         }
 
 
+        public static function save(){
+            $pedido = new Pedido();
+            $pedido->setUsuario($_SESSION['identity']->id);
+
+            foreach($_SESSION['carrito'][$_SESSION['identity']->id] as $indice => $elemento){
+
+            $pedido->setId($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['producto_id']);
+            $pedido->setUnidades($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['cantidad']);
+            $pedido->setPrecioPedido($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['precio']);
+
+            $pedido_id = $pedido->save();
+
+            }
+
+            CarritoController::deleteAll();
+
+            // $_SESSION['carrito'][$_SESSION['identity']->id][];
+
+        }
+
         /**
          * Funcion que crea un pedido nuevo con los elementos del carrito
          */
-        public static function save(){
+        public static function savee(){
             if(isset($_SESSION['carrito'][$_SESSION['identity']->id]) && isset($_SESSION['identity']) && !isset($_SESSION['admin'])){
                 /**
                  * 1. Crear un nuevo pedido
@@ -50,6 +70,9 @@
                  // Paso 1 y paso 2
                 $pedido = new Pedido();
                 $pedido->setUsuario($_SESSION['identity']->id);
+                
+
+
                 $pedido_id = $pedido->save();
 
                 // Paso 3
@@ -57,17 +80,22 @@
                     /**
                      * Creo tantas inserciones como sean necesarias en pedidos_has_productos con el producto_id del pedido anterior
                      */
-                    $pedidos_has_productos = new Pedidos_has_productos();
-                    $pedidos_has_productos->setPedido($pedido_id);
-                    $pedidos_has_productos->setProducto($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['producto_id']);
-                    $pedidos_has_productos->setUnidades($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['cantidad']);
-                    $pedidos_has_productos->setPrecio($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['precio']);
-                    $pedidos_has_productos->save();
+                    // $pedidos_has_productos = new Pedidos_has_productos();
+                    // $pedidos_has_productos->setPedido($pedido_id);
+                    // $pedidos_has_productos->setProducto($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['producto_id']);
+                    // $pedidos_has_productos->setUnidades($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['cantidad']);
+                    // $pedidos_has_productos->setPrecio($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['precio']);
+                    // $pedidos_has_productos->save();
 
                     /**
                      * Reduzco la cantidad de los productos seleccionados
                      */
                     $producto = new Producto();
+                    $pedido = new Pedido();
+                    $pedido->setUsuario($_SESSION['identity']->id);
+                    $pedido->setId($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['producto_id']);
+                    $pedido->setUnidades($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['unidades']);
+                    $pedido->setPrecioPedido($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['precioPedido']);
                     $producto->setId($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['producto_id']);
                     $producto->setStock($_SESSION['carrito'][$_SESSION['identity']->id][$indice]['cantidad']);
                     $producto->updateByCantidad();
@@ -85,9 +113,16 @@
         /**
          * 
          */
+
+
         public static function delete(){
-            if(isset($_SESSION['carrito']) && isset($_SESSION['identity']) && !isset($_SESSION['admin'])){
-                
+            if(isset($_SESSION['identity']) && isset($_SESSION['admin'])){
+                $pedido = new Pedido();
+                $pedido->setId($_GET['id']);
+                // var_dump($_GET['id']);
+                // exit();
+                $pedido->delete();
+                header('Location: '.URL.'?controller=pedidos&action=index');
             }else{
                 header('Location: '.URL.'?controller=auth&action=login');
             }

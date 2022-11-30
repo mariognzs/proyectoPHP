@@ -17,6 +17,7 @@
 						<table class="cart-table">
 							<thead class="cart-table-head">
 								<tr class="table-head-row">
+									<th class="product-image"># </th>
 									<th class="product-image">Producto </th>
 									<th class="product-name">Precio</th>
 									<th class="product-price">Cantidad</th>
@@ -28,6 +29,7 @@
 								{% for i in carrito %}
 								<tr class="table-head-row">
 									<th class="product-image">{{ i.producto_id }} </th>
+									<th class="product-name">{{ i.producto }}</th>
 									<th class="product-name">{{ i.precio }}</th>
 									<th class="product-price">{{ i.cantidad }}</th>
 									{% set total = total + (i.precio * i.cantidad) %}

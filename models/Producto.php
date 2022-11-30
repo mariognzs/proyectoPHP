@@ -185,7 +185,6 @@
             //$delete3 = $db->query("DELETE FROM imagen WHERE idImagenes =     $this->id");
             $delete = $db->query("DELETE FROM productos_categorias WHERE id_productos =$this->id");
             $delete = $db->query("DELETE FROM productos_imagenes WHERE id_productos =$this->id");
-
             $delete2 = $db->query("DELETE FROM productos WHERE id=$this->id");
         
         }

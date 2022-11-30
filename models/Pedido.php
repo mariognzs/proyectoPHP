@@ -5,6 +5,8 @@
         private $id;
         private $usuario;
         private $fecha;
+        private $unidades;
+        private $precioPedido;
         
         /**
          * Class constructor.
@@ -24,6 +26,14 @@
         function getFecha() {
             return $this->fecha;
         }
+
+        function getUnidades() {
+            return $this->unidades;
+        }
+
+        function getPrecioPedido() {
+            return $this->precioPedido;
+        }
     
         function setId($id) {
             $this->id = $id;
@@ -35,6 +45,14 @@
     
         function setFecha($fecha) {
             $this->fecha = $fecha;
+        }
+
+        function setUnidades($unidades) {
+            $this->unidades = $unidades;
+        }
+
+        function setPrecioPedido($precioPedido) {
+            $this->precioPedido = $precioPedido;
         }
 
         // Me va a devolver todos los elementos
@@ -64,7 +82,10 @@
         // Insertar en la base de datos
         public function save(){
             $db = Database::conectar();
-            $save = $db->query("INSERT INTO pedidos (usuario_id, fecha) VALUES ('$this->usuario', CURDATE())");
+            $save = $db->query("INSERT INTO pedidos (usuarios_id, fecha) VALUES ('$this->usuario', CURDATE());");
+            $save2 = $db->query("INSERT INTO pedidos_productos (pedido_id,producto_id, unidades,precioPedido) VALUES ('$db->insert_id', '$this->id','$this->unidades','$this->precioPedido');");
+
+
             return $db->insert_id;
         }
 
@@ -75,7 +96,9 @@
 
         // Eliminar en la base de datos filtrando por id
         public function delete(){
-
+            $db = Database::conectar();
+            $delete = $db->query("DELETE FROM pedidos_productos WHERE pedido_id ='$this->id';");
+            $delete2 = $db->query("DELETE FROM pedidos WHERE idPedidos = '$this->id';");
         }
     }
 ?>

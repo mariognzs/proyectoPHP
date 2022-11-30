@@ -8,27 +8,19 @@
 
 {% block content %}	
 
-	<!-- latest news -->
-	<div class="latest-news mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="{{ URL }}?controller=users&action=index"><div class="latest-news-bg news-bg-1 text-center">
-                            <i class="fas fa-user" style="font-size: 200px; color: black"></i>
-                            </div></a>
-						<div class="news-text-box">
-							<h3><a href="#">Usuarios</a></h3>
-							<p class="">Administración de usuarios</p>
-							<a href="{{ URL }}?controller=users&action=index" class="read-more-btn">Ver más <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<div id="admin" class="container-fluid text-center">
+	<br><br><br>
+	<h1 class="text-white display-1"><strong>BIENVENIDO A LA ZONA DE ADMINISTRACION {{ identity.nombre |upper }}<strong></h1>
+	<h1 class="text-white m-5">Pulsa en cualquier boton del menu para administrar<h1>
+	<br>
+	<a href="{{ URL }}?controller=productos&action=index" class="btn btn-danger text-white"><h3>Productos</h3></a>
+	<a href="{{ URL }}?controller=users&action=index" class="btn btn-danger text-white"><h3>Usuarios</h3></a>
+	<a href="{{ URL }}?controller=pedidos&action=index" class="btn btn-danger text-white"><h3>Pedidos</h3></a>
+	<a href="{{ URL }}?controller=categorias&action=index" class="btn btn-danger text-white"><h3>Categorias</h3></a>
+
 	</div>
-	<!-- end latest news -->
-    	<!-- end check out section -->
+
 {% endblock %}
 
 {% block script %}

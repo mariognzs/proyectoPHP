@@ -20,6 +20,7 @@
                         ]
                     );
             }else{
+                echo '<script>alert("Debe estar registrado");</script>';
                 header('Location: '.URL.'?controller=index&action=index');
             }
         }
