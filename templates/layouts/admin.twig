@@ -42,7 +42,7 @@
         </form>
 		-->
         <div class="text-end">
-			<button type="button" class="btn btn-warning"><a class="nav-link px-2 text-white" href="#"><i class="fas fa-user"></i> {{ identity.nombre |capitalize }} {{ identity.apellidos |title }}</a></button>
+			<button type="button" class="btn btn-warning"><a class="nav-link px-2 text-white" href="#"><i class="fas fa-user"></i><img class="me-2" src="assets/img/person.png" width="25"> {{ identity.nombre |capitalize }} {{ identity.apellidos |title }}</a></button>
 			<button type="button" class="btn btn-outline-light me-2"><a class="nav-link px-2 text-white" href="{{ URL }}?controller=auth&action=logout">Cerrar sesión</a></button>
         </div>
       </div>

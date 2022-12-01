@@ -8,6 +8,7 @@
  	<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+ 	<script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
   
 
 {% block style %}{% endblock %}
@@ -17,10 +18,8 @@
 <header class="p-3 text-bg-dark">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <img src="assets/img/logoNegativo.png" width="17%">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        </a>
+        <img class="me-5" src="assets/img/logoNegativo.png" width="17%">
+
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="{{ URL }}?controller=index&action=index" class="nav-link px-2 text-secondary">
@@ -28,19 +27,19 @@
 						<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"></path>
 					</svg><span class="m-2">Home<span>
           </a></li>
-          <li><a href="{{ URL }}?controller=index&action=shop" class="nav-link px-2 text-white">
+          <li class="navli"><a href="#" class="nav-link px-2 text-white">
             <svg width="25" height="25" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
 						<path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
 					</svg><span class="m-2">Shop<span>
-          </a></li>
-          <li><a href="#" class="nav-link px-2 text-white">
+          </a class="navli"></li>
+          <li class="navli"><a href="#" class="nav-link px-2 text-white">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
           <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
           <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
           </svg>
           <span class="m-2">News Letter<span>
           </a></li>
-          <li><a href="#" class="nav-link px-2 text-white">
+          <li class="navli"><a href="#" class="nav-link px-2 text-white">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-balloon" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 9.984C10.403 9.506 12 7.48 12 5a4 4 0 0 0-8 0c0 2.48 1.597 4.506 4 4.984ZM13 5c0 2.837-1.789 5.227-4.52 5.901l.244.487a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3.177 3.177 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.244-.487C4.789 10.227 3 7.837 3 5a5 5 0 0 1 10 0Zm-6.938-.495a2.003 2.003 0 0 1 1.443-1.443C7.773 2.994 8 2.776 8 2.5c0-.276-.226-.504-.498-.459a3.003 3.003 0 0 0-2.46 2.461c-.046.272.182.498.458.498s.494-.227.562-.495Z"/>
           </svg>
@@ -55,7 +54,7 @@
         <div class="text-end">
           {# <button type="button" class="btn btn-outline-light me-2"><a class="nav-link text-white"  href="{{ URL }}?controller=auth&action=login">Login</a></button> #}
              {# <button type="button" class="btn btn-warning"><a class="nav-link text-black"  href="{{ URL }}?controller=auth&action=register">Sign-up</a></button> #}
-              <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#mymodal">Login / register</button>
+              <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#mymodal"><img class="me-2" src="assets/img/person.png" width="25">Login / register</button>
                 <div class="modal fade" id="mymodal">
                     <div class="modal-dialog">
                         <diV class="modal-content">
@@ -63,46 +62,83 @@
                                 {# <h1 class="modal-title text-black">Login</h1> #}
                                 <ul class="nav nav-tabs">
                                   <li class="nav-item">
-                                    <button id="loginNav" class="nav-link active fs-3" aria-current="page">Login</button>
+                                    <button id="loginNav" class="nav-link active fs-3" aria-current="page">Login<span id="spinnerLogin" class="spinner-grow ms-3" role="status" ></span></button>
                                   </li>
                                   <li class="nav-item">
-                                    <button id="registerNav" class="nav-link fs-3">Register</button>
+                                    <button id="registerNav" class="nav-link fs-3">Register<span id="spinnerRegister" class="spinner-grow ms-3" role="status" ></span>
+                                    </button>
                                   </li>
+
                                 </ul>
 
                                 <button class="btn btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body text-black text-start">
                             
-						        	      <form id="loginForm" action="{{ URL }}?controller=auth&action=doLogin" method="POST">
+						        	      <form class="needs-validation" novalidate id="loginForm" action="{{ URL }}?controller=auth&action=doLogin" method="POST" >
                                   <div class="mb-3">
                                     <label for="emailLogin" class="form-label">Email</label>
-                                    <input type="email" name="email" class="form-control" id="emailLogin" placeholder="Escriba su mail">
+                                    <input type="email" name="email" class="form-control" id="emailLogin" placeholder="Escriba su mail" required>
                                     <div id="emailHelp" class="form-text">example@example.com.</div>
+                                    <div class="valid-feedback">
+                                      Correo puesto!
+                                    </div>
+                                      <div class="invalid-feedback">
+                                        Falta el correo.
+                                    </div>
                                   </div>
                                   <div class="mb-3">
                                     <label for="password" class="form-label">Contraseña</label>
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Escriba su contraseña">
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Escriba su contraseña" required>
+                                    <div class="valid-feedback">
+                                      Contraseña puesta!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Falta la contraseña.
+                                    </div>
                                   </div>
                                   <button type="submit" class="btn btn-warning text-white" type="submit">Enviar</button>
                                 </form>
 
-                              <form id="registerForm" action="{{ URL.URL }}?controller=auth&action=doRegister" method="POST">
+                              <form class="needs-validation" novalidate id="registerForm" action="{{ URL.URL }}?controller=auth&action=doRegister" method="POST">
                                         <div class="mb-3">
                                             <label for="nombre" class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Escriba su nombre">
+                                            <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Escriba su nombre" required>
+                                            <div class="valid-feedback">
+                                              Nombre puesto!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                              Falta el nombre.
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="apellidos" class="form-label">Apellidos</label>
-                                            <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="apellidos" placeholder="Escriba sus apellidos">
-                                        </div>
+                                            <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="apellidos" placeholder="Escriba sus apellidos" required>
+                                            <div class="valid-feedback">
+                                              Apellidos puestos!
+                                            </div>
+                                              <div class="invalid-feedback">
+                                                Faltan los apellidos.
+                                            </div>                                        </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Escriba su email">
+                                            <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Escriba su email" required>
+                                            <div class="valid-feedback">
+                                              Email puesto!
+                                            </div>
+                                              <div class="invalid-feedback">
+                                                Falta el email.
+                                            </div>   
                                         </div>
                                         <div class="mb-3">
                                             <label for="password" class="form-label">Contraseña</label>
-                                            <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Escriba su contraseña">
+                                            <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Escriba su contraseña" required>
+                                            <div class="valid-feedback">
+                                              Contraseña puesta!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Falta la contraseña.
+                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn-warning text-white">Enviar</button>
                             </form>
@@ -116,6 +152,27 @@
     </div>
   </header>
   <script src="assets/js/nav.js"></script>
+    <script>
+              // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
+    </script>
 
   
 	<!-- end header -->

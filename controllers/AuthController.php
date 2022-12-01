@@ -85,7 +85,10 @@ require_once 'models/Categoria.php';
                     header('Location: '.URL.'?controller=auth&action=welcome');
                 }
              }else{
-                header('Location: '.URL.'?controller=auth&action=login');
+                // header('Location: '.URL.'?controller=auth&action=login');
+                echo "<script>swal ( 'Oops' ,  'Something went wrong!' ,  'error' )</script>";
+                header('Location: '.URL.'?controller=index&action=index');
+
              }
         }
 
