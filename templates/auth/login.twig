@@ -7,62 +7,25 @@
 {% endblock %}
 
 {% block content %}
+	<!-- check out section -->
 
-    <div class="container-fluid">
-    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#mymodal">Abrir</button>
-    <div class="modal fade" id="mymodal">
-        <div class="modal-dialog">
-            <diV class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title">Mi primer modal</h2>
-                    <button class="btn btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    Nuestro primer modal
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </diV>
-        </div>
-    </div>
+<div class="container-fluid">
+	<form class="m-5" action="{{ URL }}?controller=auth&action=doLogin" method="POST">
+		<div class="mb-3">
+		<label for="emailLogin" class="form-label">Email address</label>
+		<input type="email" name="email" class="form-control" id="emailLogin" placeholder="Contraseña">
+		<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+		</div>
+		<div class="mb-3">
+		<label for="password" class="form-label">Password</label>
+		<input type="password" name="password" class="form-control" id="password" placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-primary" type="submit">Enviar</button>
+
+	</form>
+
 </div>
 
-
-
-	<!-- check out section -->
-	<div class="checkout-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="checkout-accordion-wrap">
-						<div class="accordion" id="accordionExample">
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingOne">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Iniciar sesión
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="billing-address-form">
-						        	<form action="{{ URL }}?controller=auth&action=doLogin" method="POST">
-						        		<p><input type="email" name="email" placeholder="email"></p>
-						        		<p><input type="password" name="password" placeholder="password"></p>
-                        <p><button class="btn btn-secondary" type="submit">Iniciar sesión</button></p>
-						        	</form>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- end check out section -->
 {% endblock %}
 
