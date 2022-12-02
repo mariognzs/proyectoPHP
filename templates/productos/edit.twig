@@ -7,56 +7,40 @@
 {% endblock %}
 
 {% block content %} 
-    <!-- check out section -->
-	<div class="checkout-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="checkout-accordion-wrap">
-						<div class="accordion" id="accordionExample">
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingOne">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Actualizar producto
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="billing-address-form">
-						        	<form action="{{ URL }}?controller=productos&action=update" method="POST" method="POST">
-										{# <p><input type="text" id="marca" name="marca"  value="{{ producto.nombreCategoria }}" placeholder="marca"></p>
-                                        <p><input type="text" id="tipo" name="tipo"  value="{{ producto.tipo }}" placeholder="tipo"></p> #}
-										<p><input type="hidden" name="id"  value="{{ producto.id }}"></p>
-										<p><input type="text" id="categoria" name="categoria" value="{{ producto.idCategorias }}" placeholder="Categoria"></p>
-										<p><input type="text" id="nombre" name="nombre" value="{{ producto.nombre }}" placeholder="nombre"></p>
-                                        <p><input type="text" id="descripcion" name="descripcion" value="{{ producto.descripcion }}" placeholder="descripcion"></p>
-						        		<p><input type="number" step="0.01" id="precio" name="precio"  value="{{ producto.precio }}"placeholder="precio"></p>
-                                        <p><input type="number" id="stock" name="stock"  value="{{ producto.stock }}"placeholder="stock"></p>
-										<p><input type="number" id="id_imagenes" name="id_imagenes"  value="{{ producto.id_imagenes }}"placeholder="id_imagenes"></p>
 
-                                         {# <p>
-											<select name="categoria" id="categoria">
-											{% for u in producto %}
-												{% if u.id == producto.categoria_id %}
-													<option value="{{ u.idCategoria }}" selected>{{ u.nombre }}</option>
-												{% else %}
-													<option value="{{ u.idCategoria }}">{{ u.nombre }}</option>
-												{% endif %}
-											{% endfor %}
-											</select>
-										</p>  #}
-										<p><button class="btn btn-secondary" type="submit">Actualizar</button></p>
-						        	</form>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<form class="m-5" action="{{ URL }}?controller=productos&action=update" method="POST" method="POST">
+	<table class="table">
+	<thead>
+		<tr>
+		<th scope="col form-label"></th>
+		<th scope="col form-label">Marca</th>
+		<th scope="col form-label">Nombre</th>
+		<th scope="col form-label">Descripcion</th>
+		<th scope="col form-label">Precio</th>
+		<th scope="col form-label">Stock</th>
+		<th scope="col form-label">Imagen</th>
+		<th scope="col form-label"></th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+		<th scope="row"><input class="form-control" type="hidden" name="id"  value="{{ producto.id }}"></th>
+		<td><input class="form-control" type="text" id="categoria" name="categoria" value="{{ producto.idCategorias }}" placeholder="Categoria"></td>
+		<td><input class="form-control" type="text" id="nombre" name="nombre" value="{{ producto.nombre }}" placeholder="nombre"></td>
+		<td><input class="form-control" type="text" id="descripcion" name="descripcion" value="{{ producto.descripcion }}" placeholder="descripcion"></td>
+		<td><input class="form-control" type="number" step="0.01" id="precio" name="precio"  value="{{ producto.precio }}"placeholder="precio"></td>
+		<td><input class="form-control" type="number" id="stock" name="stock"  value="{{ producto.stock }}"placeholder="stock"></td>
+		<td>
+			<input class="form-control" type="file" id="image" name="image"  value="{{ producto.image }}"placeholder="image">
+		</td>
+		<td><button class="btn btn-warning" type="submit">Actualizar</button></td>
+		</tr>
+	</tbody>
+	</table>
+</form>
+
+
+
+  
 {% endblock %}

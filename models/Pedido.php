@@ -67,11 +67,14 @@
             $db = Database::conectar();
             $findAll = $db->query("SELECT * FROM pedidos INNER JOIN pedidos_productos ON pedidos.idPedidos = pedidos_productos.pedido_id INNER JOIN productos ON pedidos_productos.producto_id = productos.id;");
             return $findAll;
-            
+
         }
 
-        public function findById(){
 
+        public function findById(){
+            $db = Database::conectar();
+            $findAll = $db->query("SELECT * FROM pedidos INNER JOIN pedidos_productos ON pedidos.idPedidos = '$this->id' INNER JOIN productos ON pedidos_productos.producto_id = productos.id; ")->fetch_object();
+            return $findAll;
         }
 
         // Me devuelve el elemento filtrado por usuario

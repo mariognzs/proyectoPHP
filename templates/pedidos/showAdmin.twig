@@ -8,6 +8,33 @@
 
 {% block content %}
 
+<div class="m-0 mt-5 row justify-content-center">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="" class="img-fluid rounded-start align-text-botton mt-3" alt="" width="100%">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <div class="card-header">
+                    <h3>{{ pedido.nombre | title }}</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Id Usuario: {{ pedido.usuarios_id }}</li>
+                    <li class="list-group-item">Unidades: {{ pedido.unidades }}</li>
+                    <li class="list-group-item">Precio: {{ pedido.precio * pedido.unidades }}</li>
+                    <li class="list-group-item">Precio: {{ pedido.fecha }}</li>
+
+                </ul>
+                <div class="card-body">
+                    <a href="{{ URL }}?controller=pedidos&action=index" class="btn btn-outline-warning card-link">Volver</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="m-5">
     <a href="{{ URL.URL }}?controller=pedidos&action=create" class="btn btn-info">Create</a>
     

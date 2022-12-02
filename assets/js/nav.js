@@ -13,6 +13,8 @@ $(document).ready(function(){
     $("#spinnerRegister").hide();
     $("#registerNav").addClass("text-warning");
 
+    
+
 })
 
 

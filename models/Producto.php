@@ -167,7 +167,7 @@
             //$update = $db->query("UPDATE productos SET nombre='$this->nombre', descripcion='$this->descripcion', precio='$this->precio', stock='$this->stock', categoria_id='$this->categoria' WHERE id=$this->id");
             $update = $db->query("UPDATE productos SET nombre='$this->nombre', descripcion='$this->descripcion', precio='$this->precio', stock='$this->stock' WHERE id=$this->id");
             $update2 = $db->query("UPDATE productos_categorias SET id_categorias='$this->categoria' WHERE id_productos = '$this->id'");
-            $update3 = $db->query("UPDATE productos_imagenes SET id_imagenes = '$this->idImagen' WHERE id_productos = '$this->id'");
+            //DESCOMENTAR CUANDO FUNCIONE FOTO//$update3 = $db->query("UPDATE productos_imagenes SET id_imagenes = '$this->idImagen' WHERE id_productos = '$this->id'");
 
 
 

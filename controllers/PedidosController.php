@@ -30,6 +30,25 @@
                         'URL' => URL
                     ]
                 );
+            }else{
+                echo "NO VA";
+            }
+        }
+
+        public static function showAdmin(){
+            if(isset($_SESSION['identity']) && isset($_SESSION['admin'])){
+                $pedido = new Pedido();
+                $pedido->setId($_GET['id']);
+                echo $GLOBALS["twig"]->render(
+                    'pedidos/showAdmin.twig', 
+                    [
+                        'pedido' => $pedido->findById(),
+                        'identity' => $_SESSION['identity'],
+                        'URL' => URL
+                    ]
+                );
+            }else{
+                header('Location: '.URL.'?controller=auth&action=login');
             }
         }
 

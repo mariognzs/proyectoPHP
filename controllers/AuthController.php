@@ -1,6 +1,7 @@
 <?php 
 require_once 'models/Producto.php';
 require_once 'models/Categoria.php';
+
     class AuthController{
         /**
          * Funcion que redirige a la vista del login
@@ -85,9 +86,15 @@ require_once 'models/Categoria.php';
                     header('Location: '.URL.'?controller=auth&action=welcome');
                 }
              }else{
-                // header('Location: '.URL.'?controller=auth&action=login');
-                echo "<script>swal ( 'Oops' ,  'Something went wrong!' ,  'error' )</script>";
-                header('Location: '.URL.'?controller=index&action=index');
+
+                echo $GLOBALS["twig"]->render(
+                    'index.twig',
+                    [   
+                        'URL' => URL
+                    ]
+                );
+                echo "<script>swal ( 'Error' ,  'Los credenciales no son correctos!' ,  'error' )</script>";
+                // header('Location: '.URL.'?controller=index&action=index');
 
              }
         }

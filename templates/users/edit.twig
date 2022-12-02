@@ -3,41 +3,32 @@
 {% block title %} USUARIOS | EDIT {% endblock %}
 
 {% block content %} 
-    <!-- check out section -->
-	<div class="checkout-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="checkout-accordion-wrap">
-						<div class="accordion" id="accordionExample">
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingOne">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Actualizar usuario
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="billing-address-form">
-						        	<form action="{{ URL }}?controller=users&action=update" method="POST" method="POST">
-                                        <p><input type="hidden" name="id"  value="{{ user.id }}"></p>
-						        		<p><input type="text" id="nombre" name="nombre"  value="{{ user.nombre }}" placeholder="nombre"></p>
-                                        <p><input type="text" id="apellidos" name="apellidos"  value="{{ user.apellidos }}" placeholder="apellidos"></p>
-						        		<p><input type="email" id="email" name="email"  value="{{ user.email }}" placeholder="email"></p>
-										<p><input type="text" id="rol" name="rol"  value="{{ user.rol_id }}" placeholder="rol"></p>
-                                        <p><input type="password" id="password" name="password" placeholder="password"></p>
-                                        <p><button class="btn btn-secondary" type="submit">Actualizar</button></p>
-						        	</form>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+<form class="m-5" action="{{ URL }}?controller=users&action=update" method="POST" method="POST">
+	<table class="table">
+	<thead>
+		<tr>
+		<th scope="col form-label"></th>
+		<th scope="col form-label">Nombre</th>
+		<th scope="col form-label">Apellidos</th>
+		<th scope="col form-label">Email</th>
+		<th scope="col form-label">Rol</th>
+		<th scope="col form-label">Contraseña</th>
+		<thscope="col form-label"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+		<th scope="row"><input class="form-control" type="hidden" name="id"  value="{{ user.id }}"></th>
+		<td><input class="form-control" type="text" id="nombre" name="nombre"  value="{{ user.nombre }}" placeholder="nombre"></td>
+		<td><input class="form-control" type="text" id="apellidos" name="apellidos"  value="{{ user.apellidos }}" placeholder="apellidos"></td>
+		<td><input class="form-control" type="email" id="email" name="email"  value="{{ user.email }}" placeholder="email"></td>
+		<td><input class="form-control" type="text" id="rol" name="rol"  value="{{ user.rol_id }}" placeholder="rol"></td>
+		<td><input class="form-control" type="password" id="password" name="password" placeholder="password"></td>
+		<td><button class="btn btn-warning" type="submit">Actualizar</button></td>
+		</tr>
+	</tbody>
+	</table>
+</form>
+   
 {% endblock %}

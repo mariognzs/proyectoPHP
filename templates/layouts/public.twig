@@ -101,7 +101,8 @@
                                 </form>
 
                               <form class="needs-validation" novalidate id="registerForm" action="{{ URL.URL }}?controller=auth&action=doRegister" method="POST">
-                                        <div class="mb-3">
+                                        <div class="row g-3">
+                                        <div class="mb-3 col">
                                             <label for="nombre" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Escriba su nombre" required>
                                             <div class="valid-feedback">
@@ -111,7 +112,7 @@
                                               Falta el nombre.
                                             </div>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-3 col">
                                             <label for="apellidos" class="form-label">Apellidos</label>
                                             <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="apellidos" placeholder="Escriba sus apellidos" required>
                                             <div class="valid-feedback">
@@ -119,7 +120,9 @@
                                             </div>
                                               <div class="invalid-feedback">
                                                 Faltan los apellidos.
-                                            </div>                                        </div>
+                                              </div>      
+                                          </div>  
+                                          </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Escriba su email" required>

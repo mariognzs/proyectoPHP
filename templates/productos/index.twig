@@ -26,8 +26,8 @@
         {% for u in productos %}
             <tr>
                 <th scope="row">{{ u.id }}</th>
-                <td>{{ u.nombreCategoria }}</td>
-                <td>{{ u.nombre }}</td>
+                <td>{{ u.nombreCategoria |title }}</td>
+                <td>{{ u.nombre |title }}</td>
                 <td>{{ u.descripcion }}</td>
                 <td>{{ u.precio }}</td>
                 <td>{{ u.stock }}</td>

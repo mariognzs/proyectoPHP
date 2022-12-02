@@ -8,80 +8,65 @@
 
 {% block content %}
 
-<!-- cart -->
-	<div class="cart-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-md-12">
-					<div class="cart-table-wrap">
-						<table class="cart-table">
-							<thead class="cart-table-head">
-								<tr class="table-head-row">
-									<th class="product-image"># </th>
-									<th class="product-image">Producto </th>
-									<th class="product-name">Precio</th>
-									<th class="product-price">Cantidad</th>
-								</tr>
-							</thead>
-							<tbody>
-								{# Mostrar cada elemento de mi carrito como una fila  #}
-								{% set total = 0 %}
-								{% for i in carrito %}
-								<tr class="table-head-row">
-									<th class="product-image">{{ i.producto_id }} </th>
-									<th class="product-name">{{ i.producto }}</th>
-									<th class="product-name">{{ i.precio }}</th>
-									<th class="product-price">{{ i.cantidad }}</th>
-									{% set total = total + (i.precio * i.cantidad) %}
-								</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-						<br>
-						
-						<input type="submit" value="Actualizar carrito">
-						</form>
-						<a href="{{ URL }}?controller=carrito&action=deleteAll" >
-                            <input type="submit" value="Eliminar productos">
-                        </a>
-						<a href="{{ URL }}?controller=pedidos&action=save" >
-                            <input type="submit" value="Finalizar compra">
-                        </a>
-					</div>
-				</div>
 
-				<div class="col-lg-4">
-					<div class="total-section">
-						<table class="total-table">
-							<thead class="total-table-head">
-								<tr class="table-total-row">
-									<th>Tipo</th>
-									<th>Precio</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-total-row">
-									<th>Total articulos</th>
-									<th>{{ total }}</th>
-								</tr>
-								<tr class="table-total-row">
-									<th>Envio</th>
-									<th>10€</th>
-								</tr>
-								<tr class="table-total-row">
-									<th>Total</th>
-									<th>{{ total + 10 }}€</th>
-								</tr>
-							</tbody>
-						</table>
-						<div class="cart-buttons">
-						
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<table class="table m-5">
+  <thead>
+    <tr>
+      <th scope="col">Producto</th>
+	  <th scope="col">Imagen</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% set total = 0 %}
+	{% for i in carrito %}
+    <tr>
+      <td>{{ i.producto }}</td>
+	  <td>{{ i.imagen }}</td>
+      <td>{{ i.precio }}</td>
+      <td>{{ i.cantidad }}</td>
+	  {% set total = total + (i.precio * i.cantidad) %}
+	</tr>
+	{% endfor %}
+</tbody>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<table class="table m-5">
+  <thead>
+    <tr>
+      <th scope="col">Total articulos</th>
+      <th scope="col">Precio Envio</th>
+      <th scope="col">Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ total }}</td>
+      <td>10€</td>
+      <td>{{ total + 10 }}€</td>
+	</tr>
+</tbody>
+    </tr>
+  </tbody>
+</table>
+
+<div class="m-5">
+	<input class="btn btn-primary" type="submit" value="Actualizar carrito">
+		</form>
+		<a href="{{ URL }}?controller=carrito&action=deleteAll" >
+			<input class="btn btn-danger" type="submit" value="Eliminar productos">
+		</a>
+		<a href="{{ URL }}?controller=pedidos&action=save" >
+			<input class="btn btn-success" type="submit" value="Finalizar compra">
+		</a>
+</div>
+
+
 	<!-- end cart -->
 {% endblock %}
 

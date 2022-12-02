@@ -22,11 +22,11 @@
     {# Bucle en Twig #}
         {% for u in users %}
             <tr>
-                <th scope="row">{{ u.id }}</th>
-                <td>{{ u.nombre }}</td>
-                <td>{{ u.apellidos }}</td>
+                <th scope="row">{{ u.id |title }}</th>
+                <td>{{ u.nombre |title }}</td>
+                <td>{{ u.apellidos |title }}</td>
                 <td>{{ u.email }}</td>
-                <td>{{ u.nombreRol }}</td>
+                <td>{{ u.nombreRol |title }}</td>
                 <td></td>
                 <td class="text-end">
                     <a href="{{ URL.URL }}?controller=users&action=edit&id={{ u.id }}" class="btn btn-warning">Edit</a>
