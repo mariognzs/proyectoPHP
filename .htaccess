@@ -8,11 +8,11 @@
 
     RewriteEngine on
 
-    ErrorDocument 404 http://localhost/DEWS_VS/templates/error/404.twig
+    ErrorDocument 404 http://localhost/DEWS_VS/?controller=error&action=_404
 
-    ErrorDocument 403 http://localhost/DEWS_VS/templates/error/403.twig
+    ErrorDocument 403 http://localhost/DEWS_VS/?controller=error&action=_403
 
-    ErrorDocument 500 http://localhost/DEWS_VS/templates/error/500.twig
+    ErrorDocument 500 http://localhost/DEWS_VS/?controller=error&action=_500
 
     # No voy a poder cargar un directorio (!-d) ni un fichero (!-f) cualquiera
 
