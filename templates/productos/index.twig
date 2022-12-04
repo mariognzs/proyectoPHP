@@ -24,6 +24,8 @@
     <tbody>
     {# Bucle en Twig #}
         {% for u in productos %}
+                {# {% for a in imagen %} #}
+
             <tr>
                 <th scope="row">{{ u.id }}</th>
                 <td>{{ u.nombreCategoria |title }}</td>
@@ -31,8 +33,11 @@
                 <td>{{ u.descripcion }}</td>
                 <td>{{ u.precio }}</td>
                 <td>{{ u.stock }}</td>
-                <td>  <img alt="Embedded Image" src="data:image/png;base64,{{ u[imagen] }}" /></td>
+                {# <td>{{ u.imagen }}</td> #}
+                {# <td>{{ u.imagen }}</td> #}
+                <td>  <img alt="" src="data:image/png;base64,{{ u[imagen] }}"  /></td>
                 <!--<td class="product-image"><img src="assets/img/avaters/usuario.png" style="border-radius:50%"alt=""></td>-->
+                {# {% endfor %} #}
 
                 <td></td>
                 <td class="text-end">

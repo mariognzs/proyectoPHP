@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="m-5">
-    <a href="{{ URL.URL }}?controller=productos&action=create" class="btn btn-info">Create</a>
+    <a href="{{ URL.URL }}?controller=categorias&action=create" class="btn btn-info">Create</a>
     
     <table class="table table-striped">
     <thead>
@@ -28,7 +28,6 @@
                 <td></td>
                 <td class="text-end">
 					<a href="{{ URL }}?controller=categorias&action=edit&id={{ u.idCategorias }}" class="btn btn-warning">Edit</a>
-					<a href="{{ URL }}?controller=categorias&action=show&id={{ u.idCategorias }}" class="btn btn-success">Show</a>
 					<a href="{{ URL }}?controller=categorias&action=delete&id={{ u.idCategorias }}" class="btn btn-danger">Delete</a>
                 </div>
             </tr>

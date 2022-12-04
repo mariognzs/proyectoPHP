@@ -13,6 +13,7 @@
                 //$categoria = new Categoria();
                 echo $GLOBALS["twig"]->render('productos/index.twig', 
                     [
+                        // 'imagen' => $producto->findImagen(),
                         'productos' => $producto->findCategotiasAll(),
                         //'categorias' => $categoria->findAll(),
                         'identity' => $_SESSION['identity'],

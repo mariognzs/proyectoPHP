@@ -14,6 +14,22 @@ require_once 'models/Categoria.php';
             );
         }
 
+        public function perfil(){
+            $user = new User();
+
+            $user->setId(implode([$_SESSION['identity']->id]));
+
+            echo $GLOBALS["twig"]->render(
+                'perfil/index.twig',
+                [
+                    'user' => $user->findIdRol(),
+                    'identity' => $_SESSION['identity'],
+                    'URL' => URL
+                    
+                ]
+            );
+        }
+
         public function register(){
             echo $GLOBALS["twig"]->render(
                 'auth/register.twig',

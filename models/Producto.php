@@ -128,8 +128,18 @@
 
         public function findCategotiasAll(){
             $db = Database::conectar();
-            $findAll = $db->query("SELECT * FROM productos INNER JOIN productos_categorias ON productos.id = productos_categorias.id_productos INNER JOIN categorias ON productos_categorias.id_categorias = categorias.idCategorias");
+            $findAll = $db->query("SELECT * FROM productos INNER JOIN productos_categorias ON productos.id = productos_categorias.id_productos INNER JOIN categorias ON productos_categorias.id_categorias = categorias.idCategorias INNER JOIN productos_imagenes ON productos.id = productos_imagenes.id_productos INNER JOIN imagenes ON imagenes.idImagenes = productos_imagenes.id_imagenes");
+            // var_dump($findAll);
+            // die();
             return $findAll;
+        }
+
+        public function findImagen(){
+            $db = Database::conectar();
+            $imagenFind = $db->query("SELECT imagen FROM imagenes");
+            // var_dump($imagenFind);
+            // die();
+            return base64_encode($imagenFind);
         }
 
         // Me devuelve el elemento filtrado por id
@@ -164,6 +174,7 @@
         // Actualizar en la base de datos filtrando por id
         public function update(){
             $db = Database::conectar();
+            $this->imagen = base64_encode($this->imagen);
             //$update = $db->query("UPDATE productos SET nombre='$this->nombre', descripcion='$this->descripcion', precio='$this->precio', stock='$this->stock', categoria_id='$this->categoria' WHERE id=$this->id");
             $update = $db->query("UPDATE productos SET nombre='$this->nombre', descripcion='$this->descripcion', precio='$this->precio', stock='$this->stock' WHERE id=$this->id");
             $update2 = $db->query("UPDATE productos_categorias SET id_categorias='$this->categoria' WHERE id_productos = '$this->id'");

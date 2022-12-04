@@ -1,0 +1,22 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %} PRODUCTOS | CREATE {% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block content %} 
+
+	<form class="m-5" action="{{ URL }}?controller=categorias&action=save" method="POST" method="POST" method="POST">
+        <div class="row m-0 p-0 justify-content-center mb-3">
+            <div class="col-6 row">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre marca">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

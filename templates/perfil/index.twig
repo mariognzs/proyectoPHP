@@ -1,4 +1,12 @@
+{% if user.rol_id != 1 %}
+
 {% extends "layouts/private.twig" %}
+
+{% else %}
+
+{# {% extends "layouts/admin.twig" %} #}
+
+{% endif %}
 
 {% block title %}PERFIL{% endblock %}
 
@@ -9,7 +17,25 @@
 {% block content %}
 
 
-
+<div class="m-0 mt-5 row justify-content-center">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="assets/img/user.svg" class="img-fluid rounded-start align-text-botton mt-3" alt="" width="100%">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <div class="card-header">
+                    <h3>{{ identity.nombre | title }} {{ identity.apellidos | title }}</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Email: {{ identity.email }}</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

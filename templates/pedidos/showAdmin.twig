@@ -35,43 +35,6 @@
     </div>
 </div>
 
-<div class="m-5">
-    <a href="{{ URL.URL }}?controller=pedidos&action=create" class="btn btn-info">Create</a>
-    
-    <table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Usuario</th>
-            <th scope="col">Producto</th>
-            <th scope="col">Unidades</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Fecha</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-    {# Bucle en Twig #}
-        {# {{ pedidos|length }} #}
-        {% for u in pedidos %}
-       
-            <tr>
-                <th scope="row">{{ u.idPedidos }}</th>
-                <td>{{ u.usuarios_id }}</td>
-                <td>{{ u.nombre }}</td>
-                <td>{{ u.unidades }}</td>
-                <td>{{ u.precioPedido }}</td>
-                <td>{{ u.fecha }}</td>
-                <td></td>
-                <td class="text-end">
-                    <a href="{{ URL.URL }}?controller=pedidos&action=showAdmin&id={{ u.idPedidos }}" class="btn btn-success">Show</a>
-                    <a href="{{ URL.URL }}?controller=pedidos&action=delete&id={{ u.idPedidos }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>  
 
 
 {% endblock %}

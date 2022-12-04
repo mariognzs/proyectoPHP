@@ -30,6 +30,7 @@
                 echo $GLOBALS["twig"]->render(
                     'users/create.twig',
                     [
+                        'identity' => $_SESSION['identity'],
                         'URL' => URL
                     ]
                 );
@@ -102,7 +103,7 @@
          * 
          */
         public static function update(){
-            if(isset($_SESSION['identity'])){
+            if(isset($_SESSION['identity']) && isset($_SESSION['admin'])){
                 $user = new User();
                 $user->setId($_POST['id']);
                 $user->setNombre($_POST['nombre']);
@@ -122,7 +123,7 @@
          * 
          */
         public static function delete(){
-            if(isset($_SESSION['identity'])){
+            if(isset($_SESSION['identity']) && isset($_SESSION['admin'])){
                 $user = new User();
                 $user->setId($_GET['id']);
                 $user->delete();

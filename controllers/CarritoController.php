@@ -4,20 +4,33 @@ class CarritoController
 {
 
 
-
     public static function index()
     {
         if (isset($_SESSION['identity']) && !isset($_SESSION['admin'])) {
             // var_dump($_SESSION['carrito']);
             // exit();
-            echo $GLOBALS['twig']->render(
-                'carrito/index.twig',
-                [
-                    'carrito' => $_SESSION['carrito'][$_SESSION['identity']->id],
-                    'identity' => $_SESSION['identity'],
-                    'URL' => URL
-                ]
-            );
+            if(isset($_SESSION['carrito'][$_SESSION['identity']->id]) != null){
+
+                echo $GLOBALS['twig']->render(
+                    'carrito/index.twig',
+                    [
+                        'carrito' => $_SESSION['carrito'][$_SESSION['identity']->id],
+                        'identity' => $_SESSION['identity'],
+                        'URL' => URL
+                    ]
+                );
+
+            }else{
+                echo $GLOBALS['twig']->render(
+                    'carrito/index.twig',
+                    [
+                        'vacio' => "El carrito esta vacio",
+                        'identity' => $_SESSION['identity'],
+                        'URL' => URL
+                    ]
+                );
+            }
+           
         }
     }
 
@@ -109,6 +122,7 @@ class CarritoController
         if (isset($_SESSION['identity']) && !isset($_SESSION['admin'])) {
             if (isset($_SESSION['carrito'][$_SESSION['identity']->id])) {
                 unset($_SESSION['carrito'][$_SESSION['identity']->id]);
+
             }
         }
         header('Location: ' . URL . '?controller=carrito&action=index');

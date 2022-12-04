@@ -8,6 +8,7 @@
 
 {% block content %}
 
+<h1 class="text-center" >{{ vacio }}</h1>
 
 <table class="table m-5">
   <thead>
@@ -55,8 +56,10 @@
   </tbody>
 </table>
 
+  {% if carrito != null %}
+
 <div class="m-5">
-	<input class="btn btn-primary" type="submit" value="Actualizar carrito">
+	{# <input class="btn btn-primary" type="submit" value="Actualizar carrito"> #}
 		</form>
 		<a href="{{ URL }}?controller=carrito&action=deleteAll" >
 			<input class="btn btn-danger" type="submit" value="Eliminar productos">
@@ -66,6 +69,7 @@
 		</a>
 </div>
 
+{% endif %}
 
 	<!-- end cart -->
 {% endblock %}

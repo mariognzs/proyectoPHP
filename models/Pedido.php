@@ -73,7 +73,7 @@
 
         public function findById(){
             $db = Database::conectar();
-            $findAll = $db->query("SELECT * FROM pedidos INNER JOIN pedidos_productos ON pedidos.idPedidos = '$this->id' INNER JOIN productos ON pedidos_productos.producto_id = productos.id; ")->fetch_object();
+            $findAll = $db->query("SELECT * FROM pedidos INNER JOIN pedidos_productos ON pedidos.idPedidos = pedidos_productos.pedido_id INNER JOIN productos ON pedidos_productos.producto_id = productos.id WHERE pedidos_productos.pedido_id = '$this->id'; ")->fetch_object();
             return $findAll;
         }
 
@@ -86,6 +86,7 @@
         public function save(){
             $db = Database::conectar();
             $save = $db->query("INSERT INTO pedidos (usuarios_id, fecha) VALUES ('$this->usuario', CURDATE());");
+            $this->precioPedido = $this->precioPedido *$this->unidades;
             $save2 = $db->query("INSERT INTO pedidos_productos (pedido_id,producto_id, unidades,precioPedido) VALUES ('$db->insert_id', '$this->id','$this->unidades','$this->precioPedido');");
 
 
